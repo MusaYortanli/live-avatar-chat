@@ -1,9 +1,31 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, usePage } from '@inertiajs/react';
 
-export default function Dashboard() {
+function StatCard({ label, value, detail }) {
+    return (
+        <div className="rounded-[14px] border border-[#E2E8E6] bg-surface px-6 py-5">
+            <div className="text-sm font-medium text-gray-600">{label}</div>
+            <div className="mt-1.5 text-[26px] font-bold text-gray-900">
+                {value}
+            </div>
+            {detail && (
+                <div className="mt-0.5 text-[13px] text-gray-500">{detail}</div>
+            )}
+        </div>
+    );
+}
+
+export default function Dashboard({ stats }) {
     const { auth, minutesRemaining } = usePage().props;
     const firstName = auth.user.name?.trim().split(' ')[0] ?? '';
+
+    const lastSession = stats.lastSessionAt
+        ? new Date(stats.lastSessionAt).toLocaleDateString('nl-NL', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+          })
+        : null;
 
     return (
         <AuthenticatedLayout>
@@ -19,7 +41,25 @@ export default function Dashboard() {
                         : 'Start wanneer het jou uitkomt.'}
                 </p>
 
-                <div className="mt-8 flex flex-col gap-5 rounded-[14px] border border-[#D8E6E2] bg-[#EEF5F3] px-7 py-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    <StatCard
+                        label="Beschikbare minuten"
+                        value={minutesRemaining ?? '—'}
+                    />
+                    <StatCard
+                        label="Gesprekken gevoerd"
+                        value={stats.totalSessions}
+                        detail={
+                            lastSession ? `Laatste op ${lastSession}` : null
+                        }
+                    />
+                    <StatCard
+                        label="Minuten geoefend"
+                        value={stats.minutesPracticed}
+                    />
+                </div>
+
+                <div className="mt-6 flex flex-col gap-5 rounded-[14px] border border-[#D8E6E2] bg-[#EEF5F3] px-7 py-6 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <h2 className="text-lg font-bold text-gray-900">
                             Start een oefengesprek

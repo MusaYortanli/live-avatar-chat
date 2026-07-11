@@ -59,7 +59,7 @@ export default function DeleteUserForm({ className = '' }) {
 
                 <p className="mt-1 text-[13px] leading-relaxed text-gray-600">
                     Als je je account verwijdert, worden al je gegevens
-                    definitief gewist — ook je resterende minutentegoed en je
+                    definitief gewist, ook je resterende minutentegoed en je
                     transcripten. Dit kan niet ongedaan worden gemaakt.
                 </p>
             </header>

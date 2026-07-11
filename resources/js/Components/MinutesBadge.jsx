@@ -18,7 +18,7 @@ export default function MinutesBadge({ minutes, className = '' }) {
                     low ? 'bg-[#B45309]' : 'bg-success'
                 }`}
             />
-            {low ? `${minutes} min tegoed — bijna op` : `${minutes} min tegoed`}
+            {low ? `${minutes} min tegoed (bijna op)` : `${minutes} min tegoed`}
         </span>
     );
 }

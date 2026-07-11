@@ -1,6 +1,7 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import MinutesBadge from '@/Components/MinutesBadge';
+import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
@@ -18,15 +19,32 @@ export default function AuthenticatedLayout({ header, children }) {
         <div className="min-h-screen bg-canvas">
             <nav className="border-b border-[#E2E8E6] bg-surface">
                 <div className="flex items-center justify-between px-6 py-3.5">
-                    <Link
-                        href={route('dashboard')}
-                        className="flex items-center gap-2"
-                    >
-                        <ApplicationLogo className="h-[26px] w-[26px]" />
-                        <span className="text-[15px] font-bold text-gray-900">
-                            ObizCare
-                        </span>
-                    </Link>
+                    <div className="flex items-center gap-8">
+                        <Link
+                            href={route('dashboard')}
+                            className="flex items-center gap-2"
+                        >
+                            <ApplicationLogo className="h-[26px] w-[26px]" />
+                            <span className="text-[15px] font-bold text-gray-900">
+                                ObizCare
+                            </span>
+                        </Link>
+
+                        <div className="hidden items-center gap-6 sm:flex">
+                            <NavLink
+                                href={route('dashboard')}
+                                active={route().current('dashboard')}
+                            >
+                                Dashboard
+                            </NavLink>
+                            <NavLink
+                                href={route('avatar.page')}
+                                active={route().current('avatar.page')}
+                            >
+                                Gesprek
+                            </NavLink>
+                        </div>
+                    </div>
 
                     <div className="hidden items-center gap-3 sm:flex">
                         {minutesRemaining !== null && (
@@ -48,6 +66,13 @@ export default function AuthenticatedLayout({ header, children }) {
                                 <Dropdown.Link href={route('profile.edit')}>
                                     Profiel
                                 </Dropdown.Link>
+                                {user.is_admin && (
+                                    <Dropdown.Link
+                                        href={route('admin.users.index')}
+                                    >
+                                        Beheer
+                                    </Dropdown.Link>
+                                )}
                                 <Dropdown.Link
                                     href={route('logout')}
                                     method="post"
@@ -118,6 +143,12 @@ export default function AuthenticatedLayout({ header, children }) {
                         >
                             Dashboard
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('avatar.page')}
+                            active={route().current('avatar.page')}
+                        >
+                            Gesprek
+                        </ResponsiveNavLink>
                     </div>
 
                     <div className="border-t border-gray-200 pb-1 pt-4">
@@ -134,6 +165,13 @@ export default function AuthenticatedLayout({ header, children }) {
                             <ResponsiveNavLink href={route('profile.edit')}>
                                 Profiel
                             </ResponsiveNavLink>
+                            {user.is_admin && (
+                                <ResponsiveNavLink
+                                    href={route('admin.users.index')}
+                                >
+                                    Beheer
+                                </ResponsiveNavLink>
+                            )}
                             <ResponsiveNavLink
                                 method="post"
                                 href={route('logout')}

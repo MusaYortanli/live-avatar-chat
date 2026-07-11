@@ -497,7 +497,7 @@ function DisclaimerCard({ onStart }) {
                 onClick={onStart}
                 className="mt-5 w-full rounded-[10px] bg-primary px-4 py-3 text-[15px] font-semibold text-white transition hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
-                Ik begrijp het — start het gesprek
+                Ik begrijp het, start het gesprek
             </button>
         </OverlayCard>
     );

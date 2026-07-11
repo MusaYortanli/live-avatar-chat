@@ -96,12 +96,9 @@ export default function Login({ status, canResetPassword }) {
                         <span />
                     )}
 
-                    <Link
-                        href={route('register')}
-                        className="rounded-md text-primary hover:text-primary-dark hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                    >
-                        Account aanmaken
-                    </Link>
+                    <span className="text-gray-500">
+                        Nog geen account? Neem contact op met ObizCare.
+                    </span>
                 </div>
             </form>
         </GuestLayout>

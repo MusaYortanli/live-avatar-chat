@@ -1,22 +1,28 @@
 <?php
 
+use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 // Geen aparte landingspagina in de MVP: direct naar inloggen of dashboard
 Route::get('/', function () {
     return redirect()->route(auth()->check() ? 'dashboard' : 'login');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)
+    ->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/gebruikers', [UserManagementController::class, 'index'])->name('users.index');
+    Route::post('/gebruikers', [UserManagementController::class, 'store'])->name('users.store');
+    Route::post('/gebruikers/{user}/minuten', [UserManagementController::class, 'addMinutes'])->name('users.minutes');
 });
 
 require __DIR__.'/auth.php';
