@@ -46,41 +46,46 @@ export default function DeleteUserForm({ className = '' }) {
     };
 
     return (
-        <section className={`space-y-6 ${className}`}>
+        <section
+            className={
+                `space-y-4 rounded-md border border-[#F3D2D0] bg-[#FDF6F6] p-6 sm:p-8 ` +
+                className
+            }
+        >
             <header>
-                <h2 className="text-lg font-medium text-gray-900">
-                    Delete Account
+                <h2 className="text-sm font-bold text-[#8F1F19]">
+                    Account verwijderen
                 </h2>
 
-                <p className="mt-1 text-sm text-gray-600">
-                    Once your account is deleted, all of its resources and data
-                    will be permanently deleted. Before deleting your account,
-                    please download any data or information that you wish to
-                    retain.
+                <p className="mt-1 text-[13px] leading-relaxed text-gray-600">
+                    Als je je account verwijdert, worden al je gegevens
+                    definitief gewist — ook je resterende minutentegoed en je
+                    transcripten. Dit kan niet ongedaan worden gemaakt.
                 </p>
             </header>
 
-            <DangerButton onClick={confirmUserDeletion}>
-                Delete Account
-            </DangerButton>
+            <button
+                onClick={confirmUserDeletion}
+                className="inline-flex items-center justify-center rounded-[10px] border border-error bg-transparent px-5 py-2 text-sm font-semibold text-error transition hover:bg-error-soft focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2"
+            >
+                Verwijderen…
+            </button>
 
             <Modal show={confirmingUserDeletion} onClose={closeModal}>
-                <form onSubmit={deleteUser} className="p-6">
-                    <h2 className="text-lg font-medium text-gray-900">
-                        Are you sure you want to delete your account?
+                <form onSubmit={deleteUser} className="p-7">
+                    <h2 className="text-[17px] font-bold text-gray-900">
+                        Weet je zeker dat je je account wilt verwijderen?
                     </h2>
 
-                    <p className="mt-1 text-sm text-gray-600">
-                        Once your account is deleted, all of its resources and
-                        data will be permanently deleted. Please enter your
-                        password to confirm you would like to permanently delete
-                        your account.
+                    <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                        Al je gegevens worden definitief gewist. Vul ter
+                        bevestiging je wachtwoord in.
                     </p>
 
-                    <div className="mt-6">
+                    <div className="mt-5">
                         <InputLabel
                             htmlFor="password"
-                            value="Password"
+                            value="Wachtwoord"
                             className="sr-only"
                         />
 
@@ -93,9 +98,9 @@ export default function DeleteUserForm({ className = '' }) {
                             onChange={(e) =>
                                 setData('password', e.target.value)
                             }
-                            className="mt-1 block w-3/4"
+                            className="mt-1 block w-full sm:w-3/4"
                             isFocused
-                            placeholder="Password"
+                            placeholder="Wachtwoord"
                         />
 
                         <InputError
@@ -104,13 +109,13 @@ export default function DeleteUserForm({ className = '' }) {
                         />
                     </div>
 
-                    <div className="mt-6 flex justify-end">
+                    <div className="mt-6 flex justify-end gap-3">
                         <SecondaryButton onClick={closeModal}>
-                            Cancel
+                            Annuleren
                         </SecondaryButton>
 
-                        <DangerButton className="ms-3" disabled={processing}>
-                            Delete Account
+                        <DangerButton disabled={processing}>
+                            Account verwijderen
                         </DangerButton>
                     </div>
                 </form>

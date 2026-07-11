@@ -4,11 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title inertia>{{ config('app.name', 'Laravel') }}</title>
+        <title inertia>{{ config('app.name', 'ObizCare') }}</title>
+
+        <link rel="icon" type="image/svg+xml" href="/logo-obizcare.svg">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=source-sans-3:400,600,700&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
         @routes
@@ -16,7 +18,7 @@
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
     </head>
-    <body class="font-sans antialiased">
+    <body class="bg-canvas font-sans text-gray-900 antialiased">
         @inertia
     </body>
 </html>

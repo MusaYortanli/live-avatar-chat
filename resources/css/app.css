@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ObizCare handoff: pulserende status-dot (actief/verbinden/spreekt) */
+@keyframes obiz-dot-pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.35;
+    }
+}
+
+.animate-dot-pulse {
+    animation: obiz-dot-pulse 1.6s ease-in-out infinite;
+}
+
+.animate-dot-pulse-fast {
+    animation: obiz-dot-pulse 1s ease-in-out infinite;
+}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\UserMinuteBalance;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -34,6 +35,10 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            // Minutenbadge in de topbar komt op elk scherm terug
+            'minutesRemaining' => fn () => $request->user()
+                ? UserMinuteBalance::forUser($request->user()->id)->minutesRemaining()
+                : null,
         ];
     }
 }

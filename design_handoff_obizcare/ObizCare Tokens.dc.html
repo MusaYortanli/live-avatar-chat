@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=Lora:wght@500;600&amp;family=Nunito+Sans:wght@400;600;700&amp;family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0;background:#f5f4f1;font-family:'Source Sans 3',system-ui,sans-serif;color:#1f2523}a{color:#0e7569}a:hover{color:#0a5b51}</style>
+</helmet>
+<div style="max-width:960px;margin:0 auto;padding:48px 32px 80px;display:flex;flex-direction:column;gap:36px">
+
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a8582">ObizCare · Design tokens</div>
+    <h1 style="margin:0;font-size:30px;font-weight:700">Tokens — variant: {{ variantNaam }}</h1>
+    <p style="margin:0;font-size:15px;color:#5c6764;max-width:640px;line-height:1.55">Direct bruikbaar in Tailwind (Laravel Breeze) of als CSS custom properties. Wissel van variant via het Tweaks-paneel. Statuskleuren zijn semantisch en gelijk benoemd in alle varianten.</p>
+  </div>
+
+  <!-- kleuren -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font-size:18px;font-weight:700">Kleuren</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px">
+      <sc-for list="{{ kleuren }}" as="k" hint-placeholder-count="12">
+        <div style="background:#fff;border:1px solid #e3e3de;border-radius:10px;overflow:hidden">
+          <div style="height:52px;background:{{ k.hex }};border-bottom:1px solid rgba(0,0,0,.05)"></div>
+          <div style="padding:8px 11px">
+            <div style="font-size:12.5px;font-weight:700;font-family:ui-monospace,Menlo,monospace">{{ k.naam }}</div>
+            <div style="font-size:12px;color:#7a8582;font-family:ui-monospace,Menlo,monospace">{{ k.hex }}</div>
+            <div style="font-size:11.5px;color:#9aa3a0;margin-top:2px">{{ k.rol }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- typografie -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font-size:18px;font-weight:700">Typografie</h2>
+    <div style="background:#fff;border:1px solid #e3e3de;border-radius:12px;padding:22px 26px;display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{ typo }}" as="t" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:220px 1fr;gap:18px;align-items:baseline;border-bottom:1px solid #f0f0ec;padding-bottom:14px">
+          <div>
+            <div style="font-size:12.5px;font-weight:700;font-family:ui-monospace,Menlo,monospace">{{ t.token }}</div>
+            <div style="font-size:12px;color:#7a8582">{{ t.spec }}</div>
+          </div>
+          <div style="font-family:{{ t.ff }};font-size:{{ t.fs }};font-weight:{{ t.fw }};line-height:1.3">Een rustig gesprek begint met luisteren</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- spacing / radius / schaduw -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div style="background:#fff;border:1px solid #e3e3de;border-radius:12px;padding:22px 26px;display:flex;flex-direction:column;gap:12px">
+      <h2 style="margin:0;font-size:16px;font-weight:700">Spacing-schaal</h2>
+      <div style="font-size:12.5px;color:#7a8582">4px-basis: 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64</div>
+      <div style="display:flex;align-items:flex-end;gap:8px">
+        <div style="width:4px;height:4px;background:#0e7569;border-radius:2px"></div>
+        <div style="width:8px;height:8px;background:#0e7569;border-radius:2px"></div>
+        <div style="width:12px;height:12px;background:#0e7569;border-radius:2px"></div>
+        <div style="width:16px;height:16px;background:#0e7569;border-radius:3px"></div>
+        <div style="width:24px;height:24px;background:#0e7569;border-radius:3px"></div>
+        <div style="width:32px;height:32px;background:#0e7569;border-radius:4px"></div>
+        <div style="width:48px;height:48px;background:#0e7569;border-radius:5px"></div>
+      </div>
+      <h2 style="margin:10px 0 0;font-size:16px;font-weight:700">Radius</h2>
+      <div style="display:flex;gap:12px;align-items:flex-end">
+        <sc-for list="{{ radii }}" as="r" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:5px;align-items:center">
+            <div style="width:64px;height:44px;background:#eef2f0;border:1.5px solid #0e7569;border-radius:{{ r.px }}"></div>
+            <div style="font-size:11.5px;font-family:ui-monospace,Menlo,monospace;color:#5c6764">{{ r.naam }} · {{ r.px }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid #e3e3de;border-radius:12px;padding:22px 26px;display:flex;flex-direction:column;gap:14px">
+      <h2 style="margin:0;font-size:16px;font-weight:700">Schaduwen</h2>
+      <div style="display:flex;gap:16px">
+        <div style="flex:1;height:70px;background:#fff;border-radius:10px;box-shadow:0 1px 2px rgba(20,35,32,.06);display:grid;place-items:center;font-size:12px;font-family:ui-monospace,Menlo,monospace;color:#5c6764">shadow-sm</div>
+        <div style="flex:1;height:70px;background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(20,35,32,.08),0 4px 12px rgba(20,35,32,.06);display:grid;place-items:center;font-size:12px;font-family:ui-monospace,Menlo,monospace;color:#5c6764">shadow-md</div>
+        <div style="flex:1;height:70px;background:#fff;border-radius:10px;box-shadow:0 8px 30px rgba(20,35,32,.16);display:grid;place-items:center;font-size:12px;font-family:ui-monospace,Menlo,monospace;color:#5c6764">shadow-lg</div>
+      </div>
+      <div style="font-size:12.5px;color:#7a8582;line-height:1.5">sm: kaarten in rust · md: interactieve kaarten en dropdowns · lg: modals (o.a. de disclaimer).</div>
+    </div>
+  </div>
+
+  <!-- statuskleuren voorbeeld -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font-size:18px;font-weight:700">Sessiestatussen in gebruik</h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;gap:6px;background:{{ stActBg }};color:{{ stActFg }};border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:{{ stActFg }}"></span>Actief</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;background:{{ stConnBg }};color:{{ stConnFg }};border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:{{ stConnFg }}"></span>Verbinden…</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;background:{{ stErrBg }};color:{{ stErrFg }};border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:{{ stErrFg }}"></span>Fout</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;background:{{ stLaagBg }};color:{{ stLaagFg }};border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:{{ stLaagFg }}"></span>Tegoed bijna op</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;background:{{ stErrBg }};color:{{ stErrFg }};border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600">Tegoed op</span>
+    </div>
+  </div>
+
+  <!-- tailwind config -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font-size:18px;font-weight:700">Tailwind-config (kopieerbaar)</h2>
+    <pre style="margin:0;background:#161c1a;color:#cfe0dc;border-radius:12px;padding:22px 26px;font-size:12.5px;line-height:1.6;overflow:auto;font-family:ui-monospace,Menlo,monospace;white-space:pre">{{ tailwindConfig }}</pre>
+    <h2 style="margin:8px 0 0;font-size:18px;font-weight:700">CSS custom properties</h2>
+    <pre style="margin:0;background:#161c1a;color:#cfe0dc;border-radius:12px;padding:22px 26px;font-size:12.5px;line-height:1.6;overflow:auto;font-family:ui-monospace,Menlo,monospace;white-space:pre">{{ cssVars }}</pre>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;zeegroen&quot;,&quot;options&quot;:[&quot;zeegroen&quot;,&quot;terracotta&quot;,&quot;blauw&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Variant&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const variant = this.props.variant ?? 'zeegroen';
+
+    const shared = {
+      success: { naam: 'success', hex: '#16803C', rol: 'Semantisch: succes / actief' },
+      successBg: { naam: 'success-soft', hex: '#E7F5EC', rol: 'Achtergrond succes-badge' },
+      warning: { naam: 'warning', hex: '#946300', rol: 'Semantisch: waarschuwing / tegoed laag' },
+      warningBg: { naam: 'warning-soft', hex: '#FCF3DC', rol: 'Achtergrond warning-badge' },
+      error: { naam: 'error', hex: '#B3261E', rol: 'Semantisch: fout / tegoed op / stop' },
+      errorBg: { naam: 'error-soft', hex: '#FBEAE9', rol: 'Achtergrond error-badge' },
+      info: { naam: 'info', hex: '#2B6CB0', rol: 'Semantisch: info / verbinden' },
+      infoBg: { naam: 'info-soft', hex: '#E8F0F8', rol: 'Achtergrond info-badge' },
+    };
+
+    const V = {
+      zeegroen: {
+        naam: 'Zeegroen (1a)',
+        primary: '#0E7569', primaryDark: '#0A5B51', secondary: '#2B6CB0',
+        bg: '#F4F6F5', surface: '#FFFFFF',
+        gray: ['#FBFCFC','#EEF2F0','#DBE6E3','#CFD9D6','#9AA8A5','#7A8A87','#5C6B69','#41504E','#2A3735','#1C2B2A'],
+        fontHead: "'Source Sans 3', sans-serif", fontBody: "'Source Sans 3', sans-serif",
+        radius: [['sm','8px'],['md','12px'],['lg','16px']],
+      },
+      terracotta: {
+        naam: 'Warm terracotta (1b)',
+        primary: '#B85C38', primaryDark: '#9A4A2C', secondary: '#5B4B8A',
+        bg: '#FAF5EF', surface: '#FFFDFA',
+        gray: ['#FFFDFA','#F3EBE1','#EADFD3','#DDCFC0','#B3A89E','#8A8178','#7A716A','#5C554D','#443E37','#33302B'],
+        fontHead: "'Lora', serif", fontBody: "'Nunito Sans', sans-serif",
+        radius: [['sm','12px'],['md','18px'],['lg','24px']],
+      },
+      blauw: {
+        naam: 'Helder blauw (1c)',
+        primary: '#1D5FAE', primaryDark: '#16497F', secondary: '#4D8FD6',
+        bg: '#F4F7FB', surface: '#FFFFFF',
+        gray: ['#FAFBFD','#EEF2F8','#DCE4EF','#C4D0E0','#9DAABC','#7E93B2','#5A6B85','#3C4D68','#243854','#16233A'],
+        fontHead: "'Public Sans', sans-serif", fontBody: "'Public Sans', sans-serif",
+        radius: [['sm','4px'],['md','8px'],['lg','12px']],
+      },
+    };
+    const v = V[variant] || V.zeegroen;
+
+    const kleuren = [
+      { naam: 'primary', hex: v.primary, rol: 'Knoppen, links, avatar-accenten' },
+      { naam: 'primary-dark', hex: v.primaryDark, rol: 'Hover / active' },
+      { naam: 'secondary', hex: v.secondary, rol: 'Secundair accent' },
+      { naam: 'bg', hex: v.bg, rol: 'Paginachtergrond' },
+      { naam: 'surface', hex: v.surface, rol: 'Kaarten en panelen' },
+      ...v.gray.map((hex, i) => ({ naam: 'gray-' + ((i + 1) * 100 - (i === 0 ? 50 : 0)), hex, rol: i === 0 ? 'Subtielste tint' : i === 9 ? 'Primaire tekst' : i >= 6 ? 'Secundaire tekst' : 'Randen / vlakken' })),
+      shared.success, shared.successBg, shared.warning, shared.warningBg, shared.error, shared.errorBg, shared.info, shared.infoBg,
+      { naam: 'status-actief', hex: shared.success.hex, rol: 'Sessiestatus: actief gesprek' },
+      { naam: 'status-verbinden', hex: shared.info.hex, rol: 'Sessiestatus: verbinden' },
+      { naam: 'status-fout', hex: shared.error.hex, rol: 'Sessiestatus: fout' },
+      { naam: 'tegoed-laag', hex: '#B45309', rol: 'Minutenteller: bijna op' },
+      { naam: 'tegoed-op', hex: shared.error.hex, rol: 'Minutenteller: op' },
+    ];
+
+    const typo = [
+      { token: 'heading-xl', spec: v.fontHead.split(',')[0].replace(/'/g, '') + ' · 30px · 700', ff: v.fontHead, fs: '30px', fw: variant === 'terracotta' ? 600 : 700 },
+      { token: 'heading-lg', spec: '22px · 700', ff: v.fontHead, fs: '22px', fw: variant === 'terracotta' ? 600 : 700 },
+      { token: 'heading-md', spec: '17px · 700', ff: v.fontHead, fs: '17px', fw: variant === 'terracotta' ? 600 : 700 },
+      { token: 'body', spec: v.fontBody.split(',')[0].replace(/'/g, '') + ' · 15px · 400', ff: v.fontBody, fs: '15px', fw: 400 },
+      { token: 'label', spec: '13px · 600', ff: v.fontBody, fs: '13px', fw: 600 },
+      { token: 'transcript', spec: '13.5px · 400 · lh 1.5', ff: v.fontBody, fs: '13.5px', fw: 400 },
+    ];
+
+    const radii = v.radius.map(([naam, px]) => ({ naam, px }));
+
+    const grayLines = v.gray.map((hex, i) => "          '" + ((i + 1) * 100 - (i === 0 ? 50 : 0)) + "': '" + hex + "',").join('\n');
+    const tailwindConfig = `// tailwind.config.js — ObizCare · ${v.naam}
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { DEFAULT: '${v.primary}', dark: '${v.primaryDark}' },
+        secondary: '${v.secondary}',
+        surface: '${v.surface}',
+        canvas: '${v.bg}',
+        gray: {
+${grayLines}
+        },
+        success: { DEFAULT: '${shared.success.hex}', soft: '${shared.successBg.hex}' },
+        warning: { DEFAULT: '${shared.warning.hex}', soft: '${shared.warningBg.hex}' },
+        error:   { DEFAULT: '${shared.error.hex}', soft: '${shared.errorBg.hex}' },
+        info:    { DEFAULT: '${shared.info.hex}', soft: '${shared.infoBg.hex}' },
+        status: {
+          actief: '${shared.success.hex}',
+          verbinden: '${shared.info.hex}',
+          fout: '${shared.error.hex}',
+          'tegoed-laag': '#B45309',
+          'tegoed-op': '${shared.error.hex}',
+        },
+      },
+      fontFamily: {
+        heading: [${v.fontHead}],
+        body: [${v.fontBody}],
+      },
+      borderRadius: { sm: '${v.radius[0][1]}', md: '${v.radius[1][1]}', lg: '${v.radius[2][1]}', full: '9999px' },
+      boxShadow: {
+        sm: '0 1px 2px rgba(20,35,32,.06)',
+        md: '0 1px 3px rgba(20,35,32,.08), 0 4px 12px rgba(20,35,32,.06)',
+        lg: '0 8px 30px rgba(20,35,32,.16)',
+      },
+      spacing: { /* 4px-basis: Tailwind-default volstaat */ },
+    },
+  },
+};`;
+
+    const cssVars = `:root {
+  --color-primary: ${v.primary};
+  --color-primary-dark: ${v.primaryDark};
+  --color-secondary: ${v.secondary};
+  --color-canvas: ${v.bg};
+  --color-surface: ${v.surface};
+${v.gray.map((hex, i) => '  --color-gray-' + ((i + 1) * 100 - (i === 0 ? 50 : 0)) + ': ' + hex + ';').join('\n')}
+  --color-success: ${shared.success.hex};   --color-success-soft: ${shared.successBg.hex};
+  --color-warning: ${shared.warning.hex};   --color-warning-soft: ${shared.warningBg.hex};
+  --color-error: ${shared.error.hex};     --color-error-soft: ${shared.errorBg.hex};
+  --color-info: ${shared.info.hex};      --color-info-soft: ${shared.infoBg.hex};
+  --status-actief: ${shared.success.hex};
+  --status-verbinden: ${shared.info.hex};
+  --status-fout: ${shared.error.hex};
+  --tegoed-laag: #B45309;
+  --tegoed-op: ${shared.error.hex};
+  --font-heading: ${v.fontHead};
+  --font-body: ${v.fontBody};
+  --radius-sm: ${v.radius[0][1]};  --radius-md: ${v.radius[1][1]};  --radius-lg: ${v.radius[2][1]};
+  --shadow-sm: 0 1px 2px rgba(20,35,32,.06);
+  --shadow-md: 0 1px 3px rgba(20,35,32,.08), 0 4px 12px rgba(20,35,32,.06);
+  --shadow-lg: 0 8px 30px rgba(20,35,32,.16);
+}`;
+
+    return {
+      variantNaam: v.naam,
+      kleuren, typo, radii, tailwindConfig, cssVars,
+      stActBg: shared.successBg.hex, stActFg: shared.success.hex,
+      stConnBg: shared.infoBg.hex, stConnFg: shared.info.hex,
+      stErrBg: shared.errorBg.hex, stErrFg: shared.error.hex,
+      stLaagBg: shared.warningBg.hex, stLaagFg: '#B45309',
+    };
+  }
+}
+</script>
+</body>
+</html>

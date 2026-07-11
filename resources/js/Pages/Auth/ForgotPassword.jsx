@@ -1,8 +1,9 @@
 import InputError from '@/Components/InputError';
+import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function ForgotPassword({ status }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -17,21 +18,23 @@ export default function ForgotPassword({ status }) {
 
     return (
         <GuestLayout>
-            <Head title="Forgot Password" />
+            <Head title="Wachtwoord vergeten" />
 
-            <div className="mb-4 text-sm text-gray-600">
-                Forgot your password? No problem. Just let us know your email
-                address and we will email you a password reset link that will
-                allow you to choose a new one.
+            <div className="mb-4 text-sm leading-relaxed text-gray-600">
+                Wachtwoord vergeten? Geen probleem. Vul je e-mailadres in en we
+                sturen je een link waarmee je een nieuw wachtwoord kunt
+                instellen.
             </div>
 
             {status && (
-                <div className="mb-4 text-sm font-medium text-green-600">
+                <div className="mb-4 text-sm font-semibold text-success">
                     {status}
                 </div>
             )}
 
             <form onSubmit={submit}>
+                <InputLabel htmlFor="email" value="E-mailadres" />
+
                 <TextInput
                     id="email"
                     type="email"
@@ -44,10 +47,17 @@ export default function ForgotPassword({ status }) {
 
                 <InputError message={errors.email} className="mt-2" />
 
-                <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Email Password Reset Link
-                    </PrimaryButton>
+                <PrimaryButton className="mt-6 w-full" disabled={processing}>
+                    Verstuur herstellink
+                </PrimaryButton>
+
+                <div className="mt-4 text-center text-[13px]">
+                    <Link
+                        href={route('login')}
+                        className="rounded-md text-primary hover:text-primary-dark hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    >
+                        Terug naar inloggen
+                    </Link>
                 </div>
             </form>
         </GuestLayout>

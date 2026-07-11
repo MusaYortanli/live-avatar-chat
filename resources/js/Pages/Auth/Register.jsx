@@ -23,11 +23,11 @@ export default function Register() {
 
     return (
         <GuestLayout>
-            <Head title="Register" />
+            <Head title="Account aanmaken" />
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="name" value="Naam" />
 
                     <TextInput
                         id="name"
@@ -44,7 +44,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="email" value="E-mailadres" />
 
                     <TextInput
                         id="email"
@@ -57,11 +57,16 @@ export default function Register() {
                         required
                     />
 
+                    <p className="mt-1 text-[13px] text-gray-500">
+                        Gebruik bij voorkeur een privé-e-mailadres, geen
+                        werkmail van je organisatie.
+                    </p>
+
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="password" value="Wachtwoord" />
 
                     <TextInput
                         id="password"
@@ -70,6 +75,7 @@ export default function Register() {
                         value={data.password}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
+                        placeholder="Minimaal 10 tekens"
                         onChange={(e) => setData('password', e.target.value)}
                         required
                     />
@@ -80,7 +86,7 @@ export default function Register() {
                 <div className="mt-4">
                     <InputLabel
                         htmlFor="password_confirmation"
-                        value="Confirm Password"
+                        value="Wachtwoord bevestigen"
                     />
 
                     <TextInput
@@ -102,17 +108,17 @@ export default function Register() {
                     />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
+                <PrimaryButton className="mt-6 w-full" disabled={processing}>
+                    Account aanmaken
+                </PrimaryButton>
+
+                <div className="mt-4 text-center text-[13px]">
                     <Link
                         href={route('login')}
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="rounded-md text-primary hover:text-primary-dark hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     >
-                        Already registered?
+                        Al een account? Inloggen
                     </Link>
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Register
-                    </PrimaryButton>
                 </div>
             </form>
         </GuestLayout>

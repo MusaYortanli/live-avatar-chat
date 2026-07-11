@@ -23,11 +23,11 @@ export default function ResetPassword({ token, email }) {
 
     return (
         <GuestLayout>
-            <Head title="Reset Password" />
+            <Head title="Nieuw wachtwoord instellen" />
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="email" value="E-mailadres" />
 
                     <TextInput
                         id="email"
@@ -43,7 +43,7 @@ export default function ResetPassword({ token, email }) {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="password" value="Nieuw wachtwoord" />
 
                     <TextInput
                         id="password"
@@ -53,6 +53,7 @@ export default function ResetPassword({ token, email }) {
                         className="mt-1 block w-full"
                         autoComplete="new-password"
                         isFocused={true}
+                        placeholder="Minimaal 10 tekens"
                         onChange={(e) => setData('password', e.target.value)}
                     />
 
@@ -62,7 +63,7 @@ export default function ResetPassword({ token, email }) {
                 <div className="mt-4">
                     <InputLabel
                         htmlFor="password_confirmation"
-                        value="Confirm Password"
+                        value="Wachtwoord bevestigen"
                     />
 
                     <TextInput
@@ -83,11 +84,9 @@ export default function ResetPassword({ token, email }) {
                     />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Reset Password
-                    </PrimaryButton>
-                </div>
+                <PrimaryButton className="mt-6 w-full" disabled={processing}>
+                    Wachtwoord opslaan
+                </PrimaryButton>
             </form>
         </GuestLayout>
     );

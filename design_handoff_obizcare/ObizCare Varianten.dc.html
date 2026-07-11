@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=Lora:wght@500;600&amp;family=Nunito+Sans:wght@400;600;700&amp;family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}
+a{color:#1d5fae}a:hover{color:#16497f}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-note{margin:0 0 24px;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.55);max-width:760px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+@keyframes la-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes la-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">ObizCare — logovoorstellen</span></div>
+<p class="dv-note">Vier richtingen, elk getoond als merk + woordmerk en als klein app-icoon. Kleuren volgen automatisch de gekozen variant (<a class="dv-oid" href="#1a">1a</a> zeegroen hieronder als voorbeeld; elk merk werkt in alle drie de paletten).</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Gespreksballon met hart — warm, letterlijk "zorggesprek"</div>
+<div class="dv-card" style="width:340px;padding:28px;display:flex;flex-direction:column;gap:22px;font-family:'Source Sans 3',sans-serif">
+  <div style="display:flex;align-items:center;gap:12px">
+    <svg width="44" height="44" viewBox="0 0 44 44"><path d="M22 4C12.6 4 5 10.9 5 19.4c0 4.8 2.4 9 6.2 11.8L10 39l8.3-4.1c1.2.2 2.4.3 3.7.3 9.4 0 17-6.9 17-15.4S31.4 4 22 4z" fill="#0e7569"></path><path d="M22 27.2s-7.2-4.3-7.2-9.1c0-2.5 2-4.4 4.4-4.4 1.1 0 2.1.6 2.8 1.4.7-.8 1.7-1.4 2.8-1.4 2.4 0 4.4 1.9 4.4 4.4 0 4.8-7.2 9.1-7.2 9.1z" fill="#fff"></path></svg>
+    <div style="font-size:24px;font-weight:700;color:#1c2b2a;letter-spacing:-.01em">obiz<span style="color:#0e7569">care</span></div>
+  </div>
+  <div style="display:flex;gap:14px;align-items:center">
+    <div style="width:40px;height:40px;border-radius:10px;background:#0e7569;display:grid;place-items:center"><svg width="26" height="26" viewBox="0 0 44 44"><path d="M22 4C12.6 4 5 10.9 5 19.4c0 4.8 2.4 9 6.2 11.8L10 39l8.3-4.1c1.2.2 2.4.3 3.7.3 9.4 0 17-6.9 17-15.4S31.4 4 22 4z" fill="#fff"></path><path d="M22 27.2s-7.2-4.3-7.2-9.1c0-2.5 2-4.4 4.4-4.4 1.1 0 2.1.6 2.8 1.4.7-.8 1.7-1.4 2.8-1.4 2.4 0 4.4 1.9 4.4 4.4 0 4.8-7.2 9.1-7.2 9.1z" fill="#0e7569"></path></svg></div>
+    <div style="width:28px;height:28px;border-radius:8px;background:#0e7569;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 44 44"><path d="M22 4C12.6 4 5 10.9 5 19.4c0 4.8 2.4 9 6.2 11.8L10 39l8.3-4.1c1.2.2 2.4.3 3.7.3 9.4 0 17-6.9 17-15.4S31.4 4 22 4z" fill="#fff"></path></svg></div>
+    <span style="font-size:11.5px;color:#7a8a87">app-icoon · favicon</span>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Twee overlappende cirkels — dialoog tussen culturen</div>
+<div class="dv-card" style="width:340px;padding:28px;display:flex;flex-direction:column;gap:22px;font-family:'Source Sans 3',sans-serif">
+  <div style="display:flex;align-items:center;gap:12px">
+    <svg width="48" height="40" viewBox="0 0 52 40"><circle cx="19" cy="20" r="15" fill="#0e7569" opacity=".85"></circle><circle cx="33" cy="20" r="15" fill="#e8a87c" opacity=".85"></circle><path d="M26 8.5a15 15 0 0 1 0 23 15 15 0 0 1 0-23z" fill="#8f4e35"></path></svg>
+    <div style="font-size:24px;font-weight:700;color:#1c2b2a;letter-spacing:-.01em">obizcare</div>
+  </div>
+  <div style="display:flex;gap:14px;align-items:center">
+    <div style="width:40px;height:40px;border-radius:10px;background:#122523;display:grid;place-items:center"><svg width="30" height="24" viewBox="0 0 52 40"><circle cx="19" cy="20" r="15" fill="#4fd1b5" opacity=".9"></circle><circle cx="33" cy="20" r="15" fill="#e8a87c" opacity=".9"></circle></svg></div>
+    <div style="width:28px;height:28px;border-radius:8px;background:#122523;display:grid;place-items:center"><svg width="20" height="16" viewBox="0 0 52 40"><circle cx="19" cy="20" r="15" fill="#4fd1b5" opacity=".9"></circle><circle cx="33" cy="20" r="15" fill="#e8a87c" opacity=".9"></circle></svg></div>
+    <span style="font-size:11.5px;color:#7a8a87">app-icoon · favicon</span>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Woordmerk met sprekende "o" — rustig, typografisch</div>
+<div class="dv-card" style="width:340px;padding:28px;display:flex;flex-direction:column;gap:22px;font-family:'Source Sans 3',sans-serif">
+  <div style="display:flex;align-items:baseline;gap:2px">
+    <svg width="19" height="22" viewBox="0 0 38 44" style="align-self:flex-end;margin-bottom:1px"><circle cx="19" cy="17" r="13" fill="none" stroke="#0e7569" stroke-width="7"></circle><path d="M11 28 L6 40 L20 32" fill="#0e7569"></path></svg>
+    <div style="font-size:24px;font-weight:700;color:#1c2b2a;letter-spacing:-.01em">bizcare</div>
+  </div>
+  <div style="display:flex;gap:14px;align-items:center">
+    <div style="width:40px;height:40px;border-radius:10px;background:#0e7569;display:grid;place-items:center"><svg width="24" height="24" viewBox="0 0 38 38"><circle cx="19" cy="19" r="15" fill="none" stroke="#fff" stroke-width="5"></circle><path d="M10 30 L7 36 L15 33" fill="#fff"></path></svg></div>
+    <div style="width:28px;height:28px;border-radius:8px;background:#0e7569;display:grid;place-items:center"><svg width="17" height="17" viewBox="0 0 38 38"><circle cx="19" cy="19" r="15" fill="none" stroke="#fff" stroke-width="5"></circle><path d="M10 30 L7 36 L15 33" fill="#fff"></path></svg></div>
+    <span style="font-size:11.5px;color:#7a8a87">app-icoon · favicon</span>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="2d">
+<div class="dv-olabel"><a class="dv-oid" href="#2d">2d</a>"O" met stemgolven — avatar die spreekt</div>
+<div class="dv-card" style="width:340px;padding:28px;display:flex;flex-direction:column;gap:22px;font-family:'Source Sans 3',sans-serif">
+  <div style="display:flex;align-items:center;gap:12px">
+    <svg width="42" height="42" viewBox="0 0 42 42"><circle cx="21" cy="21" r="17" fill="#0e7569"></circle><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg>
+    <div style="font-size:24px;font-weight:700;color:#1c2b2a;letter-spacing:-.01em">obiz<span style="color:#0e7569">care</span></div>
+  </div>
+  <div style="display:flex;gap:14px;align-items:center">
+    <div style="width:40px;height:40px;border-radius:10px;background:#0e7569;display:grid;place-items:center"><svg width="26" height="26" viewBox="0 0 42 42"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div>
+    <div style="width:28px;height:28px;border-radius:8px;background:#0e7569;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 42 42"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div>
+    <span style="font-size:11.5px;color:#7a8a87">app-icoon · favicon</span>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Probeer: "gebruik <a class="dv-oid" href="#2a">2a</a> overal in het prototype" · "maak <a class="dv-oid" href="#2b">2b</a> in de terracotta-kleuren van <a class="dv-oid" href="#1b">1b</a>" · "meer logovarianten"</p>
+</section>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">ObizCare — drie systeemrichtingen</span></div>
+<p class="dv-note"><strong>Aannames:</strong> desktop-first (tablet-vriendelijke breedtes), light mode, Nederlands. Avatar-video is een placeholder (HeyGen komt later). Minutentegoed is visueel; naam en tegoed zijn tweakbaar via het Tweaks-paneel. Elk sessiescherm is klikbaar: accepteer de disclaimer → verbinden → actief → stop. Onder elk sessiescherm staan demo-knoppen voor <em>fout</em> en <em>tegoed op</em>. Alle drie de richtingen delen dezelfde structuur en semantische statuskleuren; ze verschillen in kleur, typografie, radius en sessielayout.</p>
+<div class="dv-opts">
+
+<!-- ================= 1a ZEEGROEN ================= -->
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Zeegroen — kalm, klinisch-warm · Source Sans 3 · radius 12</div>
+<div class="dv-card" style="width:1120px;background:#f4f6f5;padding:24px;display:flex;flex-direction:column;gap:24px;font-family:'Source Sans 3',sans-serif;color:#1c2b2a">
+
+  <!-- A login + profiel row -->
+  <div style="display:flex;gap:24px;align-items:flex-start">
+    <div data-screen-label="1a Login" style="flex:none;width:420px;background:#eef2f0;border:1px solid #e2e8e6;border-radius:16px;padding:48px 0;display:flex;justify-content:center">
+      <div style="width:340px;background:#ffffff;border-radius:12px;box-shadow:0 1px 3px rgba(16,40,38,.07);border:1px solid #e2e8e6;padding:32px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:34px;height:34px;border-radius:10px;background:#0e7569;color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px"><svg width="20" height="20" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div>
+          <div style="font-size:19px;font-weight:700">ObizCare</div>
+        </div>
+        <div style="font-size:14px;color:#5c6b69;margin-top:-8px">Oefen cultuursensitieve gesprekken, in je eigen tempo.</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="font-size:13px;font-weight:600">E-mailadres</label>
+          <div style="border:1px solid #cfd9d6;border-radius:10px;padding:10px 12px;font-size:14px;color:#5c6b69;background:#fbfcfc">naam@organisatie.nl</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="font-size:13px;font-weight:600">Wachtwoord</label>
+          <div style="border:1px solid #cfd9d6;border-radius:10px;padding:10px 12px;font-size:14px;color:#9aa8a5;background:#fbfcfc">••••••••</div>
+        </div>
+        <button style="background:#0e7569;color:#fff;border:none;border-radius:10px;padding:12px;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#0a5b51">Inloggen</button>
+        <div style="display:flex;justify-content:space-between;font-size:13px">
+          <a href="#1a" style="color:#0e7569;text-decoration:none">Wachtwoord vergeten?</a>
+          <a href="#1a" style="color:#0e7569;text-decoration:none">Account aanmaken</a>
+        </div>
+      </div>
+    </div>
+    <!-- A profiel -->
+    <div data-screen-label="1a Profiel" style="flex:1;background:#ffffff;border:1px solid #e2e8e6;border-radius:16px;overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid #e2e8e6">
+        <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:8px;background:#0e7569;color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px"><svg width="16" height="16" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div><span style="font-weight:700;font-size:15px">ObizCare</span></div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="display:inline-flex;align-items:center;gap:6px;background:#e7f5ec;color:#16803c;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#16803c"></span>{{ minuten }} min tegoed</span>
+          <div style="width:30px;height:30px;border-radius:50%;background:#dbe6e3;display:grid;place-items:center;font-size:12px;font-weight:600;color:#41504e">{{ initiaal }}</div>
+        </div>
+      </div>
+      <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+        <div style="font-size:20px;font-weight:700">Profiel</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:6px"><label style="font-size:13px;font-weight:600">Naam</label><div style="border:1px solid #cfd9d6;border-radius:10px;padding:9px 12px;font-size:14px;background:#fbfcfc">{{ naam }} de Vries</div></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><label style="font-size:13px;font-weight:600">E-mailadres</label><div style="border:1px solid #cfd9d6;border-radius:10px;padding:9px 12px;font-size:14px;background:#fbfcfc">s.devries@obiz.nl</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;max-width:48%"><label style="font-size:13px;font-weight:600">Nieuw wachtwoord</label><div style="border:1px solid #cfd9d6;border-radius:10px;padding:9px 12px;font-size:14px;color:#9aa8a5;background:#fbfcfc">Minimaal 10 tekens</div></div>
+        <div style="display:flex;gap:10px">
+          <button style="background:#0e7569;color:#fff;border:none;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer">Wijzigingen opslaan</button>
+          <button style="background:#fff;color:#41504e;border:1px solid #cfd9d6;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer">Annuleren</button>
+        </div>
+        <div style="border:1px solid #f3d2d0;background:#fdf6f6;border-radius:12px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+          <div><div style="font-size:14px;font-weight:700;color:#8f1f19">Account verwijderen</div><div style="font-size:13px;color:#5c6b69">Al je gegevens en gespreksgeschiedenis worden definitief gewist.</div></div>
+          <button style="background:#fff;color:#b3261e;border:1px solid #e5b5b2;border-radius:10px;padding:9px 16px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap">Verwijderen…</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A dashboard -->
+  <div data-screen-label="1a Dashboard" style="background:#ffffff;border:1px solid #e2e8e6;border-radius:16px;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid #e2e8e6">
+      <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:8px;background:#0e7569;color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px"><svg width="16" height="16" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div><span style="font-weight:700;font-size:15px">ObizCare</span></div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <sc-if value="{{ tegoedLaag }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#fcf3dc;color:#946300;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#b45309"></span>{{ minuten }} min tegoed — bijna op</span></sc-if>
+        <sc-if value="{{ tegoedOk }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#e7f5ec;color:#16803c;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#16803c"></span>{{ minuten }} min tegoed</span></sc-if>
+        <div style="width:30px;height:30px;border-radius:50%;background:#dbe6e3;display:grid;place-items:center;font-size:12px;font-weight:600;color:#41504e">{{ initiaal }}</div>
+      </div>
+    </div>
+    <div style="padding:36px 40px 40px;display:flex;flex-direction:column;gap:24px;align-items:flex-start">
+      <div>
+        <div style="font-size:26px;font-weight:700">Welkom terug, {{ naam }}</div>
+        <div style="font-size:15px;color:#5c6b69;margin-top:4px">Klaar om een gesprek te oefenen? Je tegoed: <strong style="color:#1c2b2a">{{ minuten }} minuten</strong>.</div>
+      </div>
+      <div style="width:100%;background:#eef5f3;border:1px solid #d8e6e2;border-radius:14px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+        <div style="max-width:520px">
+          <div style="font-size:18px;font-weight:700">Start een oefengesprek</div>
+          <div style="font-size:14px;color:#5c6b69;margin-top:4px">Voer een gesprek met de avatar over cultuursensitieve communicatie — bijvoorbeeld een slechtnieuwsgesprek of familie die de regie overneemt.</div>
+        </div>
+        <button style="background:#0e7569;color:#fff;border:none;border-radius:12px;padding:14px 26px;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;box-shadow:0 1px 3px rgba(16,40,38,.15)" style-hover="background:#0a5b51">Start een gesprek</button>
+      </div>
+      <div style="font-size:13px;color:#5c6b69;display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;border-radius:50%;background:#dbe6e3;display:grid;place-items:center;font-size:10px;font-weight:700;color:#41504e">i</span>ObizCare geeft communicatieadvies, geen medisch advies.</div>
+    </div>
+  </div>
+
+  <!-- A sessie -->
+  <div data-screen-label="1a Gesprekssessie" style="background:#ffffff;border:1px solid #e2e8e6;border-radius:16px;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid #e2e8e6">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:8px;background:#0e7569;color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px"><svg width="16" height="16" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div><span style="font-weight:700;font-size:15px">Oefengesprek</span></div>
+        <sc-if value="{{ aAct }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#e7f5ec;color:#16803c;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#16803c;animation:la-pulse 1.6s infinite"></span>Actief</span></sc-if>
+        <sc-if value="{{ aConn }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#e8f0f8;color:#2b6cb0;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#2b6cb0;animation:la-pulse 1s infinite"></span>Verbinden…</span></sc-if>
+        <sc-if value="{{ aIsErr }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#fbeae9;color:#b3261e;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#b3261e"></span>Verbinding verbroken</span></sc-if>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-variant-numeric:tabular-nums;font-size:14px;font-weight:600;color:#41504e;background:#eef2f0;border-radius:999px;padding:5px 12px">⏱ 12:34 resterend</span>
+        <sc-if value="{{ aAct }}" hint-placeholder-val="{{ false }}"><button onClick="{{ aStop }}" style="background:#b3261e;color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer">■ Stop gesprek</button></sc-if>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 340px;min-height:430px">
+      <!-- video area -->
+      <div style="position:relative;background:#122523;display:grid;place-items:center;padding:24px">
+        <sc-if value="{{ aDisc }}" hint-placeholder-val="{{ true }}">
+          <div style="width:460px;background:#ffffff;border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 30px rgba(0,0,0,.3)">
+            <div style="display:flex;align-items:center;gap:10px"><div style="width:36px;height:36px;border-radius:10px;background:#eef5f3;display:grid;place-items:center;font-size:17px">🛡</div><div style="font-size:17px;font-weight:700">Voordat je begint</div></div>
+            <div style="font-size:14px;line-height:1.55;color:#41504e">ObizCare helpt je oefenen met <strong>communicatie</strong> in cultuursensitieve situaties. De avatar geeft <strong>géén medisch advies</strong>, geen diagnoses en geen behandelinformatie. Twijfel je over medische zaken? Overleg dan altijd met een collega of behandelaar.</div>
+            <div style="font-size:13px;color:#5c6b69;background:#f4f6f5;border-radius:10px;padding:10px 12px">Het gesprek is een oefening. Er worden geen echte patiëntgegevens gebruikt of opgeslagen.</div>
+            <button onClick="{{ aAccept }}" style="background:#0e7569;color:#fff;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#0a5b51">Ik begrijp het — start het gesprek</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ aConn }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;color:#cfe0dc">
+            <div style="width:44px;height:44px;border:4px solid rgba(255,255,255,.2);border-top-color:#4fd1b5;border-radius:50%;animation:la-spin 1s linear infinite"></div>
+            <div style="font-size:15px;font-weight:600">Verbinden met de avatar…</div>
+            <div style="font-size:13px;color:#8fa8a3">Dit duurt meestal een paar seconden</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ aAct }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 35%, #24443f 0%, #122523 70%)">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+              <div style="width:150px;height:150px;border-radius:50%;background:#33564f;display:grid;place-items:center;font-size:52px">👤</div>
+              <div style="color:#cfe0dc;font-size:14px;font-weight:600">Mevrouw Yilmaz (dochter)</div>
+              <div style="color:#8fa8a3;font-size:12px">Avatar-video · HeyGen-placeholder</div>
+            </div>
+            <span style="position:absolute;left:16px;bottom:14px;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.4);color:#8ee6cf;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#4fd1b5;animation:la-pulse 1.6s infinite"></span>Avatar spreekt…</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ aEnd }}" hint-placeholder-val="{{ false }}">
+          <div style="width:420px;background:#ffffff;border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;text-align:center;align-items:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#e7f5ec;color:#16803c;display:grid;place-items:center;font-size:20px">✓</div>
+            <div style="font-size:17px;font-weight:700">Sessie beëindigd</div>
+            <div style="font-size:14px;color:#5c6b69">Je oefende 7 minuten. Het transcript blijft hiernaast beschikbaar.</div>
+            <div style="display:flex;gap:10px">
+              <button onClick="{{ aAccept }}" style="background:#0e7569;color:#fff;border:none;border-radius:10px;padding:11px 18px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer">Nieuw gesprek</button>
+              <button onClick="{{ aReset }}" style="background:#fff;color:#41504e;border:1px solid #cfd9d6;border-radius:10px;padding:11px 18px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer">Naar dashboard</button>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ aIsErr }}" hint-placeholder-val="{{ false }}">
+          <div style="width:420px;background:#ffffff;border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;text-align:center;align-items:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#fbeae9;color:#b3261e;display:grid;place-items:center;font-size:20px">!</div>
+            <div style="font-size:17px;font-weight:700">De verbinding is verbroken</div>
+            <div style="font-size:14px;color:#5c6b69">Er ging iets mis met de videoverbinding. Je tegoed loopt niet door. Probeer het opnieuw.</div>
+            <button onClick="{{ aAccept }}" style="background:#0e7569;color:#fff;border:none;border-radius:10px;padding:11px 18px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer">Opnieuw verbinden</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ aIsOut }}" hint-placeholder-val="{{ false }}">
+          <div style="width:420px;background:#ffffff;border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;text-align:center;align-items:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#fcf3dc;color:#946300;display:grid;place-items:center;font-size:20px">⏱</div>
+            <div style="font-size:17px;font-weight:700">Je minutentegoed is op</div>
+            <div style="font-size:14px;color:#5c6b69">Het gesprek is netjes afgerond en het transcript is bewaard. Vraag nieuw tegoed aan via je organisatie.</div>
+            <button onClick="{{ aReset }}" style="background:#0e7569;color:#fff;border:none;border-radius:10px;padding:11px 18px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer">Naar dashboard</button>
+          </div>
+        </sc-if>
+      </div>
+      <!-- transcript -->
+      <div style="border-left:1px solid #e2e8e6;display:flex;flex-direction:column;background:#fbfcfc">
+        <div style="padding:12px 16px;border-bottom:1px solid #e2e8e6;font-size:13px;font-weight:700;color:#41504e">Transcript</div>
+        <div style="flex:1;overflow:auto;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ transcript }}" as="m" hint-placeholder-count="4">
+            <div>
+              <sc-if value="{{ m.sys }}" hint-placeholder-val="{{ false }}"><div style="text-align:center;font-size:12px;color:#7a8a87;background:#eef2f0;border-radius:8px;padding:6px 10px">{{ m.text }}</div></sc-if>
+              <sc-if value="{{ m.av }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:11px;font-weight:700;color:#0e7569">Avatar</span><div style="background:#eef5f3;border-radius:10px 10px 10px 3px;padding:9px 12px;font-size:13.5px;line-height:1.5;color:#1c2b2a">{{ m.text }}</div></div></sc-if>
+              <sc-if value="{{ m.us }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end"><span style="font-size:11px;font-weight:700;color:#5c6b69">Jij</span><div style="background:#0e7569;color:#fff;border-radius:10px 10px 3px 10px;padding:9px 12px;font-size:13.5px;line-height:1.5;max-width:92%">{{ m.text }}</div></div></sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:12px;border-top:1px solid #e2e8e6;display:flex;gap:8px">
+          <div style="flex:1;border:1px solid #cfd9d6;border-radius:10px;padding:10px 12px;font-size:13.5px;color:#9aa8a5;background:#fff">Typ je reactie…</div>
+          <button style="background:#0e7569;color:#fff;border:none;border-radius:10px;width:42px;font-size:16px;cursor:pointer">➤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;font-size:12px;color:#7a8a87">Demo-statussen:
+    <button onClick="{{ aErr }}" style="background:#fff;border:1px solid #cfd9d6;border-radius:8px;padding:5px 10px;font-size:12px;font-family:inherit;cursor:pointer;color:#41504e">Simuleer fout</button>
+    <button onClick="{{ aOut }}" style="background:#fff;border:1px solid #cfd9d6;border-radius:8px;padding:5px 10px;font-size:12px;font-family:inherit;cursor:pointer;color:#41504e">Simuleer tegoed op</button>
+    <button onClick="{{ aReset }}" style="background:#fff;border:1px solid #cfd9d6;border-radius:8px;padding:5px 10px;font-size:12px;font-family:inherit;cursor:pointer;color:#41504e">Reset</button>
+  </div>
+</div>
+</div>
+
+<!-- ================= 1b TERRACOTTA ================= -->
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Warm terracotta — menselijk, zacht · Lora + Nunito Sans · radius 18</div>
+<div class="dv-card" style="width:1120px;background:#faf5ef;padding:24px;display:flex;flex-direction:column;gap:24px;font-family:'Nunito Sans',sans-serif;color:#33302b">
+
+  <div style="display:flex;gap:24px;align-items:flex-start">
+    <div data-screen-label="1b Login" style="flex:none;width:420px;background:#f3ebe1;border:1px solid #eadfd3;border-radius:22px;padding:48px 0;display:flex;justify-content:center">
+      <div style="width:340px;background:#fffdfa;border-radius:18px;box-shadow:0 2px 10px rgba(90,70,50,.1);border:1px solid #eadfd3;padding:32px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:34px;height:34px;border-radius:50%;background:#b85c38;color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px"><svg width="20" height="20" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div>
+          <div style="font-size:20px;font-weight:600;font-family:'Lora',serif">ObizCare</div>
+        </div>
+        <div style="font-size:14px;color:#7a716a;margin-top:-8px">Oefen gesprekken die ertoe doen — rustig en veilig.</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="font-size:13px;font-weight:700">E-mailadres</label>
+          <div style="border:1px solid #ddcfc0;border-radius:12px;padding:10px 14px;font-size:14px;color:#7a716a;background:#fff">naam@organisatie.nl</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="font-size:13px;font-weight:700">Wachtwoord</label>
+          <div style="border:1px solid #ddcfc0;border-radius:12px;padding:10px 14px;font-size:14px;color:#b3a89e;background:#fff">••••••••</div>
+        </div>
+        <button style="background:#b85c38;color:#fff;border:none;border-radius:999px;padding:13px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer" style-hover="background:#9a4a2c">Inloggen</button>
+        <div style="display:flex;justify-content:space-between;font-size:13px">
+          <a href="#1b" style="color:#b85c38;text-decoration:none">Wachtwoord vergeten?</a>
+          <a href="#1b" style="color:#b85c38;text-decoration:none">Account aanmaken</a>
+        </div>
+      </div>
+    </div>
+    <div data-screen-label="1b Profiel" style="flex:1;background:#fffdfa;border:1px solid #eadfd3;border-radius:22px;overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid #eadfd3">
+        <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:50%;background:#b85c38;color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px"><svg width="16" height="16" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div><span style="font-weight:600;font-size:16px;font-family:'Lora',serif">ObizCare</span></div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="display:inline-flex;align-items:center;gap:6px;background:#ede3d3;color:#6d5a3e;border-radius:999px;padding:5px 13px;font-size:13px;font-weight:700">☀ {{ minuten }} min tegoed</span>
+          <div style="width:30px;height:30px;border-radius:50%;background:#e7d9c8;display:grid;place-items:center;font-size:12px;font-weight:700;color:#6d5a3e">{{ initiaal }}</div>
+        </div>
+      </div>
+      <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+        <div style="font-size:22px;font-weight:600;font-family:'Lora',serif">Jouw profiel</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:6px"><label style="font-size:13px;font-weight:700">Naam</label><div style="border:1px solid #ddcfc0;border-radius:12px;padding:9px 14px;font-size:14px;background:#fff">{{ naam }} de Vries</div></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><label style="font-size:13px;font-weight:700">E-mailadres</label><div style="border:1px solid #ddcfc0;border-radius:12px;padding:9px 14px;font-size:14px;background:#fff">s.devries@obiz.nl</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;max-width:48%"><label style="font-size:13px;font-weight:700">Nieuw wachtwoord</label><div style="border:1px solid #ddcfc0;border-radius:12px;padding:9px 14px;font-size:14px;color:#b3a89e;background:#fff">Minimaal 10 tekens</div></div>
+        <div style="display:flex;gap:10px">
+          <button style="background:#b85c38;color:#fff;border:none;border-radius:999px;padding:10px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer">Opslaan</button>
+          <button style="background:transparent;color:#6d5a3e;border:1px solid #ddcfc0;border-radius:999px;padding:10px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer">Annuleren</button>
+        </div>
+        <div style="border:1px solid #ecc9bd;background:#fbf1ec;border-radius:16px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+          <div><div style="font-size:14px;font-weight:700;color:#93321a">Account verwijderen</div><div style="font-size:13px;color:#7a716a">Al je gegevens en gespreksgeschiedenis worden definitief gewist.</div></div>
+          <button style="background:#fff;color:#b3261e;border:1px solid #e0b3a6;border-radius:999px;padding:9px 18px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap">Verwijderen…</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-screen-label="1b Dashboard" style="background:#fffdfa;border:1px solid #eadfd3;border-radius:22px;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid #eadfd3">
+      <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:50%;background:#b85c38;color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px"><svg width="16" height="16" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div><span style="font-weight:600;font-size:16px;font-family:'Lora',serif">ObizCare</span></div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <sc-if value="{{ tegoedLaag }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#f7e6c8;color:#8a5a10;border-radius:999px;padding:5px 13px;font-size:13px;font-weight:700">⏱ {{ minuten }} min — bijna op</span></sc-if>
+        <sc-if value="{{ tegoedOk }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#ede3d3;color:#6d5a3e;border-radius:999px;padding:5px 13px;font-size:13px;font-weight:700">☀ {{ minuten }} min tegoed</span></sc-if>
+        <div style="width:30px;height:30px;border-radius:50%;background:#e7d9c8;display:grid;place-items:center;font-size:12px;font-weight:700;color:#6d5a3e">{{ initiaal }}</div>
+      </div>
+    </div>
+    <div style="padding:40px;display:flex;flex-direction:column;gap:26px;align-items:flex-start">
+      <div>
+        <div style="font-size:30px;font-weight:600;font-family:'Lora',serif">Goedemiddag, {{ naam }}</div>
+        <div style="font-size:15px;color:#7a716a;margin-top:6px">Fijn dat je er bent. Je hebt nog <strong style="color:#33302b">{{ minuten }} minuten</strong> om te oefenen.</div>
+      </div>
+      <div style="width:100%;background:linear-gradient(120deg,#f6e8dc,#f3ebe1);border:1px solid #eadfd3;border-radius:20px;padding:30px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+        <div style="max-width:520px">
+          <div style="font-size:20px;font-weight:600;font-family:'Lora',serif">Start een oefengesprek</div>
+          <div style="font-size:14.5px;color:#7a716a;margin-top:6px;line-height:1.5">Oefen een lastig gesprek in alle rust — een slechtnieuwsgesprek, familie die de regie overneemt, of religieuze coping.</div>
+        </div>
+        <button style="background:#b85c38;color:#fff;border:none;border-radius:999px;padding:15px 30px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap;box-shadow:0 2px 8px rgba(150,80,40,.25)" style-hover="background:#9a4a2c">Start een gesprek</button>
+      </div>
+      <div style="font-size:13px;color:#7a716a">ObizCare geeft communicatieadvies, geen medisch advies.</div>
+    </div>
+  </div>
+
+  <div data-screen-label="1b Gesprekssessie" style="background:#fffdfa;border:1px solid #eadfd3;border-radius:22px;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid #eadfd3">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-weight:600;font-size:16px;font-family:'Lora',serif">Oefengesprek</span>
+        <sc-if value="{{ bAct }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#e4efdd;color:#3f6d2c;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700"><span style="width:7px;height:7px;border-radius:50%;background:#5a8a43;animation:la-pulse 1.6s infinite"></span>Actief</span></sc-if>
+        <sc-if value="{{ bConn }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#ece5f2;color:#5b4b8a;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700"><span style="width:7px;height:7px;border-radius:50%;background:#5b4b8a;animation:la-pulse 1s infinite"></span>Verbinden…</span></sc-if>
+        <sc-if value="{{ bIsErr }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#fbeae9;color:#b3261e;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700"><span style="width:7px;height:7px;border-radius:50%;background:#b3261e"></span>Verbinding verbroken</span></sc-if>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-variant-numeric:tabular-nums;font-size:14px;font-weight:700;color:#6d5a3e;background:#f3ebe1;border-radius:999px;padding:5px 13px">⏱ 12:34 resterend</span>
+        <sc-if value="{{ bAct }}" hint-placeholder-val="{{ false }}"><button onClick="{{ bStop }}" style="background:#b3261e;color:#fff;border:none;border-radius:999px;padding:8px 18px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer">■ Stop gesprek</button></sc-if>
+      </div>
+    </div>
+    <!-- video top, transcript below -->
+    <div style="display:flex;flex-direction:column">
+      <div style="position:relative;background:#3a2e28;min-height:300px;display:grid;place-items:center;padding:24px">
+        <sc-if value="{{ bDisc }}" hint-placeholder-val="{{ true }}">
+          <div style="width:480px;background:#fffdfa;border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:14px;box-shadow:0 10px 34px rgba(0,0,0,.35)">
+            <div style="font-size:19px;font-weight:600;font-family:'Lora',serif">Voordat je begint</div>
+            <div style="font-size:14px;line-height:1.6;color:#5c554d">ObizCare helpt je oefenen met <strong>communicatie</strong> in cultuursensitieve situaties. De avatar geeft <strong>géén medisch advies</strong>, geen diagnoses en geen behandelinformatie. Twijfel je over medische zaken? Overleg dan altijd met een collega of behandelaar.</div>
+            <div style="font-size:13px;color:#7a716a;background:#f3ebe1;border-radius:12px;padding:10px 14px">Het gesprek is een oefening — er worden geen echte patiëntgegevens gebruikt of opgeslagen.</div>
+            <button onClick="{{ bAccept }}" style="background:#b85c38;color:#fff;border:none;border-radius:999px;padding:14px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer" style-hover="background:#9a4a2c">Ik begrijp het — start het gesprek</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ bConn }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;color:#e8d9cd">
+            <div style="width:44px;height:44px;border:4px solid rgba(255,255,255,.2);border-top-color:#e8a87c;border-radius:50%;animation:la-spin 1s linear infinite"></div>
+            <div style="font-size:15px;font-weight:700">Verbinden met de avatar…</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ bAct }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 35%, #5a463c 0%, #3a2e28 70%)">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+              <div style="width:130px;height:130px;border-radius:50%;background:#7a5f4f;display:grid;place-items:center;font-size:46px">👤</div>
+              <div style="color:#e8d9cd;font-size:14px;font-weight:700">Mevrouw Yilmaz (dochter)</div>
+              <div style="color:#b39c8c;font-size:12px">Avatar-video · HeyGen-placeholder</div>
+            </div>
+            <span style="position:absolute;left:16px;bottom:14px;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.35);color:#f0c9a8;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700"><span style="width:7px;height:7px;border-radius:50%;background:#e8a87c;animation:la-pulse 1.6s infinite"></span>Avatar spreekt…</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ bEnd }}" hint-placeholder-val="{{ false }}">
+          <div style="width:420px;background:#fffdfa;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#e4efdd;color:#3f6d2c;display:grid;place-items:center;font-size:20px">✓</div>
+            <div style="font-size:18px;font-weight:600;font-family:'Lora',serif">Sessie beëindigd</div>
+            <div style="font-size:14px;color:#7a716a">Je oefende 7 minuten. Het transcript blijft hieronder staan.</div>
+            <div style="display:flex;gap:10px">
+              <button onClick="{{ bAccept }}" style="background:#b85c38;color:#fff;border:none;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer">Nieuw gesprek</button>
+              <button onClick="{{ bReset }}" style="background:transparent;color:#6d5a3e;border:1px solid #ddcfc0;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer">Naar dashboard</button>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ bIsErr }}" hint-placeholder-val="{{ false }}">
+          <div style="width:420px;background:#fffdfa;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#fbeae9;color:#b3261e;display:grid;place-items:center;font-size:20px">!</div>
+            <div style="font-size:18px;font-weight:600;font-family:'Lora',serif">De verbinding is verbroken</div>
+            <div style="font-size:14px;color:#7a716a">Er ging iets mis met de videoverbinding. Je tegoed loopt niet door.</div>
+            <button onClick="{{ bAccept }}" style="background:#b85c38;color:#fff;border:none;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer">Opnieuw verbinden</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ bIsOut }}" hint-placeholder-val="{{ false }}">
+          <div style="width:420px;background:#fffdfa;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#f7e6c8;color:#8a5a10;display:grid;place-items:center;font-size:20px">⏱</div>
+            <div style="font-size:18px;font-weight:600;font-family:'Lora',serif">Je minutentegoed is op</div>
+            <div style="font-size:14px;color:#7a716a">Het gesprek is netjes afgerond en het transcript is bewaard. Vraag nieuw tegoed aan via je organisatie.</div>
+            <button onClick="{{ bReset }}" style="background:#b85c38;color:#fff;border:none;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer">Naar dashboard</button>
+          </div>
+        </sc-if>
+      </div>
+      <div style="padding:18px 24px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:13px;font-weight:700;color:#6d5a3e">Transcript</div>
+        <div style="display:flex;flex-direction:column;gap:12px;max-height:220px;overflow:auto">
+          <sc-for list="{{ transcript }}" as="m" hint-placeholder-count="4">
+            <div>
+              <sc-if value="{{ m.sys }}" hint-placeholder-val="{{ false }}"><div style="text-align:center;font-size:12px;color:#8a8178;background:#f3ebe1;border-radius:999px;padding:6px 12px">{{ m.text }}</div></sc-if>
+              <sc-if value="{{ m.av }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:3px;max-width:70%"><span style="font-size:11px;font-weight:700;color:#b85c38">Avatar</span><div style="background:#f6e8dc;border-radius:14px 14px 14px 4px;padding:10px 14px;font-size:13.5px;line-height:1.55;color:#33302b">{{ m.text }}</div></div></sc-if>
+              <sc-if value="{{ m.us }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end"><span style="font-size:11px;font-weight:700;color:#7a716a">Jij</span><div style="background:#b85c38;color:#fff;border-radius:14px 14px 4px 14px;padding:10px 14px;font-size:13.5px;line-height:1.55;max-width:70%">{{ m.text }}</div></div></sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:8px">
+          <div style="flex:1;border:1px solid #ddcfc0;border-radius:999px;padding:11px 16px;font-size:13.5px;color:#b3a89e;background:#fff">Typ je reactie…</div>
+          <button style="background:#b85c38;color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:16px;cursor:pointer">➤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;font-size:12px;color:#8a8178">Demo-statussen:
+    <button onClick="{{ bErr }}" style="background:#fff;border:1px solid #ddcfc0;border-radius:999px;padding:5px 12px;font-size:12px;font-family:inherit;cursor:pointer;color:#6d5a3e">Simuleer fout</button>
+    <button onClick="{{ bOut }}" style="background:#fff;border:1px solid #ddcfc0;border-radius:999px;padding:5px 12px;font-size:12px;font-family:inherit;cursor:pointer;color:#6d5a3e">Simuleer tegoed op</button>
+    <button onClick="{{ bReset }}" style="background:#fff;border:1px solid #ddcfc0;border-radius:999px;padding:5px 12px;font-size:12px;font-family:inherit;cursor:pointer;color:#6d5a3e">Reset</button>
+  </div>
+</div>
+</div>
+
+<!-- ================= 1c HELDER BLAUW ================= -->
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Helder blauw — gestructureerd, fris · Public Sans · radius 8 · zijbalk</div>
+<div class="dv-card" style="width:1120px;background:#f4f7fb;padding:24px;display:flex;flex-direction:column;gap:24px;font-family:'Public Sans',sans-serif;color:#16233a">
+
+  <div style="display:flex;gap:24px;align-items:flex-start">
+    <div data-screen-label="1c Login" style="flex:none;width:420px;background:#e9eef6;border:1px solid #dce4ef;border-radius:12px;padding:48px 0;display:flex;justify-content:center">
+      <div style="width:340px;background:#ffffff;border-radius:8px;border:1px solid #dce4ef;padding:32px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:34px;height:34px;border-radius:8px;background:#1d5fae;color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px"><svg width="20" height="20" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div>
+          <div style="font-size:19px;font-weight:700">ObizCare</div>
+        </div>
+        <div style="font-size:14px;color:#5a6b85;margin-top:-8px">Professioneel oefenen in cultuursensitieve communicatie.</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="font-size:13px;font-weight:600">E-mailadres</label>
+          <div style="border:1px solid #c4d0e0;border-radius:6px;padding:10px 12px;font-size:14px;color:#5a6b85;background:#fff">naam@organisatie.nl</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="font-size:13px;font-weight:600">Wachtwoord</label>
+          <div style="border:1px solid #c4d0e0;border-radius:6px;padding:10px 12px;font-size:14px;color:#9daabc;background:#fff">••••••••</div>
+        </div>
+        <button style="background:#1d5fae;color:#fff;border:none;border-radius:6px;padding:12px;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#16497f">Inloggen</button>
+        <div style="display:flex;justify-content:space-between;font-size:13px">
+          <a href="#1c" style="color:#1d5fae;text-decoration:none">Wachtwoord vergeten?</a>
+          <a href="#1c" style="color:#1d5fae;text-decoration:none">Account aanmaken</a>
+        </div>
+      </div>
+    </div>
+    <div data-screen-label="1c Profiel" style="flex:1;background:#ffffff;border:1px solid #dce4ef;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:180px 1fr">
+      <div style="background:#16233a;color:#aebdd4;padding:18px 0;display:flex;flex-direction:column;gap:2px">
+        <div style="display:flex;align-items:center;gap:8px;padding:0 16px 16px"><div style="width:24px;height:24px;border-radius:6px;background:#1d5fae;color:#fff;display:grid;place-items:center;font-weight:700;font-size:11px"><svg width="15" height="15" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div><span style="font-weight:700;font-size:14px;color:#fff">ObizCare</span></div>
+        <div style="padding:9px 16px;font-size:13px">Dashboard</div>
+        <div style="padding:9px 16px;font-size:13px">Gesprekken</div>
+        <div style="padding:9px 16px;font-size:13px;background:#243854;color:#fff;font-weight:600;border-left:3px solid #4d8fd6">Profiel</div>
+        <div style="margin-top:auto;padding:12px 16px;font-size:12px;border-top:1px solid #243854">⏱ {{ minuten }} min tegoed</div>
+      </div>
+      <div style="padding:22px 26px;display:flex;flex-direction:column;gap:18px">
+        <div style="font-size:19px;font-weight:700">Profiel</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="display:flex;flex-direction:column;gap:5px"><label style="font-size:12.5px;font-weight:600">Naam</label><div style="border:1px solid #c4d0e0;border-radius:6px;padding:8px 11px;font-size:13.5px;background:#fff">{{ naam }} de Vries</div></div>
+          <div style="display:flex;flex-direction:column;gap:5px"><label style="font-size:12.5px;font-weight:600">E-mailadres</label><div style="border:1px solid #c4d0e0;border-radius:6px;padding:8px 11px;font-size:13.5px;background:#fff">s.devries@obiz.nl</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;max-width:48%"><label style="font-size:12.5px;font-weight:600">Nieuw wachtwoord</label><div style="border:1px solid #c4d0e0;border-radius:6px;padding:8px 11px;font-size:13.5px;color:#9daabc;background:#fff">Minimaal 10 tekens</div></div>
+        <div style="display:flex;gap:10px">
+          <button style="background:#1d5fae;color:#fff;border:none;border-radius:6px;padding:9px 16px;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Opslaan</button>
+          <button style="background:#fff;color:#3c4d68;border:1px solid #c4d0e0;border-radius:6px;padding:9px 16px;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Annuleren</button>
+        </div>
+        <div style="border:1px solid #ecc4c1;background:#fdf4f3;border-radius:8px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+          <div><div style="font-size:13.5px;font-weight:700;color:#8f1f19">Account verwijderen</div><div style="font-size:12.5px;color:#5a6b85">Gegevens en gespreksgeschiedenis worden definitief gewist.</div></div>
+          <button style="background:#fff;color:#b3261e;border:1px solid #e0aca8;border-radius:6px;padding:8px 14px;font-size:12.5px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap">Verwijderen…</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-screen-label="1c Dashboard" style="background:#ffffff;border:1px solid #dce4ef;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:180px 1fr;min-height:340px">
+    <div style="background:#16233a;color:#aebdd4;padding:18px 0;display:flex;flex-direction:column;gap:2px">
+      <div style="display:flex;align-items:center;gap:8px;padding:0 16px 16px"><div style="width:24px;height:24px;border-radius:6px;background:#1d5fae;color:#fff;display:grid;place-items:center;font-weight:700;font-size:11px"><svg width="15" height="15" viewBox="8 8 26 26"><rect x="12" y="17" width="3.5" height="8" rx="1.75" fill="#fff"></rect><rect x="19.2" y="12" width="3.5" height="18" rx="1.75" fill="#fff"></rect><rect x="26.4" y="15" width="3.5" height="12" rx="1.75" fill="#fff"></rect></svg></div><span style="font-weight:700;font-size:14px;color:#fff">ObizCare</span></div>
+      <div style="padding:9px 16px;font-size:13px;background:#243854;color:#fff;font-weight:600;border-left:3px solid #4d8fd6">Dashboard</div>
+      <div style="padding:9px 16px;font-size:13px">Gesprekken</div>
+      <div style="padding:9px 16px;font-size:13px">Profiel</div>
+      <div style="margin-top:auto;padding:12px 16px;font-size:12px;border-top:1px solid #243854">
+        <sc-if value="{{ tegoedLaag }}" hint-placeholder-val="{{ false }}"><span style="color:#f0b35e;font-weight:600">⏱ {{ minuten }} min — bijna op</span></sc-if>
+        <sc-if value="{{ tegoedOk }}" hint-placeholder-val="{{ true }}"><span>⏱ {{ minuten }} min tegoed</span></sc-if>
+      </div>
+    </div>
+    <div style="padding:32px 36px;display:flex;flex-direction:column;gap:22px;align-items:flex-start">
+      <div>
+        <div style="font-size:24px;font-weight:700">Welkom terug, {{ naam }}</div>
+        <div style="font-size:14px;color:#5a6b85;margin-top:4px">Alles staat klaar voor je volgende oefengesprek.</div>
+      </div>
+      <div style="display:flex;gap:14px;width:100%">
+        <div style="flex:1;border:1px solid #dce4ef;border-radius:8px;padding:18px 20px">
+          <div style="font-size:12.5px;font-weight:600;color:#5a6b85;text-transform:uppercase;letter-spacing:.04em">Resterend tegoed</div>
+          <div style="font-size:30px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums">{{ minuten }} <span style="font-size:15px;font-weight:600;color:#5a6b85">min</span></div>
+        </div>
+        <div style="flex:2.2;background:#eaf1f9;border:1px solid #cfdef0;border-radius:8px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px">
+          <div><div style="font-size:15.5px;font-weight:700">Start een oefengesprek</div><div style="font-size:13px;color:#5a6b85;margin-top:3px">Cultuursensitieve communicatie oefenen met de avatar.</div></div>
+          <button style="background:#1d5fae;color:#fff;border:none;border-radius:6px;padding:12px 22px;font-size:14.5px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap" style-hover="background:#16497f">Start een gesprek</button>
+        </div>
+      </div>
+      <div style="font-size:12.5px;color:#5a6b85">ObizCare geeft communicatieadvies, geen medisch advies.</div>
+    </div>
+  </div>
+
+  <div data-screen-label="1c Gesprekssessie" style="background:#ffffff;border:1px solid #dce4ef;border-radius:12px;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #dce4ef">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-weight:700;font-size:15px">Oefengesprek</span>
+        <sc-if value="{{ cAct }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#e3f3e8;color:#177a3e;border-radius:4px;padding:4px 10px;font-size:12px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#1f9a50;animation:la-pulse 1.6s infinite"></span>ACTIEF</span></sc-if>
+        <sc-if value="{{ cConn }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#e8f0fa;color:#1d5fae;border-radius:4px;padding:4px 10px;font-size:12px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#1d5fae;animation:la-pulse 1s infinite"></span>VERBINDEN</span></sc-if>
+        <sc-if value="{{ cIsErr }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;background:#fbe9e8;color:#b3261e;border-radius:4px;padding:4px 10px;font-size:12px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#b3261e"></span>FOUT</span></sc-if>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-variant-numeric:tabular-nums;font-size:13.5px;font-weight:600;color:#3c4d68;border:1px solid #dce4ef;border-radius:6px;padding:5px 11px">⏱ 12:34</span>
+        <sc-if value="{{ cAct }}" hint-placeholder-val="{{ false }}"><button onClick="{{ cStop }}" style="background:#b3261e;color:#fff;border:none;border-radius:6px;padding:8px 15px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer">■ Stop</button></sc-if>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 340px;min-height:420px">
+      <div style="position:relative;background:#0e1826;display:grid;place-items:center;padding:24px">
+        <sc-if value="{{ cDisc }}" hint-placeholder-val="{{ true }}">
+          <div style="width:470px;background:#ffffff;border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 30px rgba(0,0,0,.4)">
+            <div style="display:flex;align-items:center;gap:10px"><div style="width:36px;height:36px;border-radius:8px;background:#e8f0fa;display:grid;place-items:center;font-size:17px">🛡</div><div style="font-size:16.5px;font-weight:700">Voordat je begint</div></div>
+            <div style="font-size:14px;line-height:1.55;color:#3c4d68">ObizCare helpt je oefenen met <strong>communicatie</strong> in cultuursensitieve situaties. De avatar geeft <strong>géén medisch advies</strong>, geen diagnoses en geen behandelinformatie. Twijfel je over medische zaken? Overleg dan altijd met een collega of behandelaar.</div>
+            <div style="font-size:13px;color:#5a6b85;background:#f4f7fb;border-left:3px solid #1d5fae;padding:10px 12px">Het gesprek is een oefening. Er worden geen echte patiëntgegevens gebruikt of opgeslagen.</div>
+            <button onClick="{{ cAccept }}" style="background:#1d5fae;color:#fff;border:none;border-radius:6px;padding:13px;font-size:14.5px;font-weight:600;font-family:inherit;cursor:pointer" style-hover="background:#16497f">Ik begrijp het — start het gesprek</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ cConn }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;color:#b8c8de">
+            <div style="width:44px;height:44px;border:4px solid rgba(255,255,255,.15);border-top-color:#4d8fd6;border-radius:50%;animation:la-spin 1s linear infinite"></div>
+            <div style="font-size:15px;font-weight:600">Verbinden met de avatar…</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ cAct }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 35%, #23364f 0%, #0e1826 70%)">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+              <div style="width:140px;height:140px;border-radius:50%;background:#33507a;display:grid;place-items:center;font-size:48px">👤</div>
+              <div style="color:#c9d7e9;font-size:14px;font-weight:600">Mevrouw Yilmaz (dochter)</div>
+              <div style="color:#7e93b2;font-size:12px">Avatar-video · HeyGen-placeholder</div>
+            </div>
+            <span style="position:absolute;left:16px;bottom:14px;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.4);color:#8fc2f5;border-radius:4px;padding:4px 10px;font-size:12px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#4d8fd6;animation:la-pulse 1.6s infinite"></span>Avatar spreekt…</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ cEnd }}" hint-placeholder-val="{{ false }}">
+          <div style="width:420px;background:#ffffff;border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#e3f3e8;color:#177a3e;display:grid;place-items:center;font-size:20px">✓</div>
+            <div style="font-size:16.5px;font-weight:700">Sessie beëindigd</div>
+            <div style="font-size:14px;color:#5a6b85">Je oefende 7 minuten. Het transcript blijft hiernaast beschikbaar.</div>
+            <div style="display:flex;gap:10px">
+              <button onClick="{{ cAccept }}" style="background:#1d5fae;color:#fff;border:none;border-radius:6px;padding:10px 17px;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Nieuw gesprek</button>
+              <button onClick="{{ cReset }}" style="background:#fff;color:#3c4d68;border:1px solid #c4d0e0;border-radius:6px;padding:10px 17px;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Naar dashboard</button>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ cIsErr }}" hint-placeholder-val="{{ false }}">
+          <div style="width:420px;background:#ffffff;border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#fbe9e8;color:#b3261e;display:grid;place-items:center;font-size:20px">!</div>
+            <div style="font-size:16.5px;font-weight:700">De verbinding is verbroken</div>
+            <div style="font-size:14px;color:#5a6b85">Er ging iets mis met de videoverbinding. Je tegoed loopt niet door.</div>
+            <button onClick="{{ cAccept }}" style="background:#1d5fae;color:#fff;border:none;border-radius:6px;padding:10px 17px;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Opnieuw verbinden</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ cIsOut }}" hint-placeholder-val="{{ false }}">
+          <div style="width:420px;background:#ffffff;border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#fdf2df;color:#946300;display:grid;place-items:center;font-size:20px">⏱</div>
+            <div style="font-size:16.5px;font-weight:700">Je minutentegoed is op</div>
+            <div style="font-size:14px;color:#5a6b85">Het gesprek is netjes afgerond en het transcript is bewaard. Vraag nieuw tegoed aan via je organisatie.</div>
+            <button onClick="{{ cReset }}" style="background:#1d5fae;color:#fff;border:none;border-radius:6px;padding:10px 17px;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Naar dashboard</button>
+          </div>
+        </sc-if>
+      </div>
+      <div style="border-left:1px solid #dce4ef;display:flex;flex-direction:column;background:#fafbfd">
+        <div style="padding:11px 16px;border-bottom:1px solid #dce4ef;font-size:12.5px;font-weight:700;color:#3c4d68;text-transform:uppercase;letter-spacing:.04em">Transcript</div>
+        <div style="flex:1;overflow:auto;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ transcript }}" as="m" hint-placeholder-count="4">
+            <div>
+              <sc-if value="{{ m.sys }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#5a6b85;background:#eef2f8;border-left:3px solid #9db4d1;padding:6px 10px">{{ m.text }}</div></sc-if>
+              <sc-if value="{{ m.av }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:11px;font-weight:700;color:#1d5fae">AVATAR</span><div style="background:#eaf1f9;border-radius:6px;padding:9px 12px;font-size:13.5px;line-height:1.5;color:#16233a">{{ m.text }}</div></div></sc-if>
+              <sc-if value="{{ m.us }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end"><span style="font-size:11px;font-weight:700;color:#5a6b85">JIJ</span><div style="background:#1d5fae;color:#fff;border-radius:6px;padding:9px 12px;font-size:13.5px;line-height:1.5;max-width:92%">{{ m.text }}</div></div></sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:12px;border-top:1px solid #dce4ef;display:flex;gap:8px">
+          <div style="flex:1;border:1px solid #c4d0e0;border-radius:6px;padding:10px 12px;font-size:13.5px;color:#9daabc;background:#fff">Typ je reactie…</div>
+          <button style="background:#1d5fae;color:#fff;border:none;border-radius:6px;width:42px;font-size:16px;cursor:pointer">➤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;font-size:12px;color:#5a6b85">Demo-statussen:
+    <button onClick="{{ cErr }}" style="background:#fff;border:1px solid #c4d0e0;border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;cursor:pointer;color:#3c4d68">Simuleer fout</button>
+    <button onClick="{{ cOut }}" style="background:#fff;border:1px solid #c4d0e0;border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;cursor:pointer;color:#3c4d68">Simuleer tegoed op</button>
+    <button onClick="{{ cReset }}" style="background:#fff;border:1px solid #c4d0e0;border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;cursor:pointer;color:#3c4d68">Reset</button>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Probeer: "werk <a class="dv-oid" href="#1a">1a</a> verder uit als volledig prototype" · "de kleuren van <a class="dv-oid" href="#1b">1b</a> met de zijbalk van <a class="dv-oid" href="#1c">1c</a>" · "maak de tokens-pagina passend bij <a class="dv-oid" href="#1a">1a</a>"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;naam&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Sanne&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Demo-data&quot;},&quot;minuten&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:42,&quot;min&quot;:0,&quot;max&quot;:120,&quot;unit&quot;:&quot;min&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Demo-data&quot;},&quot;tegoedLaag&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Demo-data&quot;}}">
+class Component extends DCLogic {
+  state = { a: 'disclaimer', b: 'disclaimer', c: 'disclaimer' };
+  componentWillUnmount() {
+    Object.values(this._t || {}).forEach(clearTimeout);
+  }
+  renderVals() {
+    const naam = this.props.naam ?? 'Sanne';
+    const minuten = this.props.minuten ?? 42;
+    const tegoedLaag = (this.props.tegoedLaag ?? false) || minuten <= 10;
+    const vals = {
+      naam,
+      minuten,
+      tegoedLaag,
+      tegoedOk: !tegoedLaag,
+      initiaal: (naam || 'S').trim().charAt(0).toUpperCase(),
+      transcript: [
+        { sys: true, av: false, us: false, text: 'Sessie gestart · Scenario: slechtnieuwsgesprek, familie neemt de regie' },
+        { sys: false, av: true, us: false, text: 'Goedemiddag. Ik ben de dochter van meneer Yilmaz. Mijn vader hoeft niet alles te weten over de uitslag — dat regelen wij als familie.' },
+        { sys: false, av: false, us: true, text: 'Ik hoor dat u uw vader wilt beschermen. Mag ik vragen wat uw grootste zorg is als hij de uitslag wél hoort?' },
+        { sys: false, av: true, us: false, text: 'Hij wordt somber van slecht nieuws. Bij ons vangt de familie dat op, zo hoort dat.' },
+        { sys: true, av: false, us: false, text: 'Tip: erken eerst de zorg van de familie voordat je het informatierecht van de patiënt benoemt.' },
+      ],
+    };
+    this._t = this._t || {};
+    for (const v of ['a', 'b', 'c']) {
+      const s = this.state[v];
+      vals[v + 'Disc'] = s === 'disclaimer';
+      vals[v + 'Conn'] = s === 'verbinden';
+      vals[v + 'Act'] = s === 'actief';
+      vals[v + 'End'] = s === 'einde';
+      vals[v + 'IsErr'] = s === 'fout';
+      vals[v + 'IsOut'] = s === 'op';
+      vals[v + 'Accept'] = () => {
+        this.setState({ [v]: 'verbinden' });
+        clearTimeout(this._t[v]);
+        this._t[v] = setTimeout(() => this.setState({ [v]: 'actief' }), 1600);
+      };
+      vals[v + 'Stop'] = () => { clearTimeout(this._t[v]); this.setState({ [v]: 'einde' }); };
+      vals[v + 'Reset'] = () => { clearTimeout(this._t[v]); this.setState({ [v]: 'disclaimer' }); };
+      vals[v + 'Err'] = () => { clearTimeout(this._t[v]); this.setState({ [v]: 'fout' }); };
+      vals[v + 'Out'] = () => { clearTimeout(this._t[v]); this.setState({ [v]: 'op' }); };
+    }
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

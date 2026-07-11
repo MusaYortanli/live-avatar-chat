@@ -20,16 +20,16 @@ export default function ConfirmPassword() {
 
     return (
         <GuestLayout>
-            <Head title="Confirm Password" />
+            <Head title="Wachtwoord bevestigen" />
 
-            <div className="mb-4 text-sm text-gray-600">
-                This is a secure area of the application. Please confirm your
-                password before continuing.
+            <div className="mb-4 text-sm leading-relaxed text-gray-600">
+                Dit is een beveiligd deel van de applicatie. Bevestig je
+                wachtwoord voordat je verdergaat.
             </div>
 
             <form onSubmit={submit}>
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="password" value="Wachtwoord" />
 
                     <TextInput
                         id="password"
@@ -44,11 +44,9 @@ export default function ConfirmPassword() {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Confirm
-                    </PrimaryButton>
-                </div>
+                <PrimaryButton className="mt-6 w-full" disabled={processing}>
+                    Bevestigen
+                </PrimaryButton>
             </form>
         </GuestLayout>
     );

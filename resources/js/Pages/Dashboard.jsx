@@ -1,31 +1,45 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 
 export default function Dashboard() {
+    const { auth, minutesRemaining } = usePage().props;
+    const firstName = auth.user.name?.trim().split(' ')[0] ?? '';
+
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Dashboard
-                </h2>
-            }
-        >
+        <AuthenticatedLayout>
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="space-y-4 p-6 text-gray-900">
-                            <p>Welkom! Start een gesprek met de gespreksassistent.</p>
-                            <Link
-                                href={route('avatar.page')}
-                                className="inline-block rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-500"
-                            >
-                                Naar de gespreksassistent
-                            </Link>
-                        </div>
+            <div className="mx-auto max-w-3xl px-6 py-9 sm:px-10">
+                <h1 className="text-[26px] font-bold text-gray-900">
+                    Welkom terug, {firstName}
+                </h1>
+                <p className="mt-1 text-[15px] text-gray-600">
+                    {minutesRemaining !== null
+                        ? `Je hebt nog ${minutesRemaining} minuten gesprekstegoed.`
+                        : 'Start wanneer het jou uitkomt.'}
+                </p>
+
+                <div className="mt-8 flex flex-col gap-5 rounded-[14px] border border-[#D8E6E2] bg-[#EEF5F3] px-7 py-6 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <h2 className="text-lg font-bold text-gray-900">
+                            Start een oefengesprek
+                        </h2>
+                        <p className="mt-1 text-sm text-gray-600">
+                            Oefen een cultuursensitieve casus met de avatar en
+                            krijg communicatieadvies op maat.
+                        </p>
                     </div>
+                    <Link
+                        href={route('avatar.page')}
+                        className="inline-flex shrink-0 items-center justify-center rounded-md bg-primary px-[26px] py-3.5 text-base font-semibold text-white transition hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    >
+                        Start een gesprek
+                    </Link>
                 </div>
+
+                <p className="mt-10 text-[13px] text-gray-600">
+                    ObizCare geeft communicatieadvies, geen medisch advies.
+                </p>
             </div>
         </AuthenticatedLayout>
     );
