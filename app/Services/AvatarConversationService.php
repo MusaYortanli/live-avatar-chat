@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\AvatarSession;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use RuntimeException;
 
@@ -95,18 +96,25 @@ PROMPT;
 
         $messages = [...$history, ['role' => 'user', 'content' => $userMessage]];
 
-        $response = Http::withHeaders([
+        try {
+            $response = Http::withHeaders([
                 'x-api-key' => config('liveavatar.anthropic_api_key'),
                 'anthropic-version' => '2023-06-01',
             ])
-            ->asJson()
-            ->timeout(30)
-            ->post('https://api.anthropic.com/v1/messages', [
-                'model' => config('liveavatar.anthropic_model'),
-                'max_tokens' => 400,
-                'system' => self::SYSTEM_PROMPT,
-                'messages' => $messages,
-            ]);
+                ->asJson()
+                ->connectTimeout(5)
+                ->timeout(30)
+                ->post('https://api.anthropic.com/v1/messages', [
+                    'model' => config('liveavatar.anthropic_model'),
+                    'max_tokens' => 400,
+                    'system' => self::SYSTEM_PROMPT,
+                    'messages' => $messages,
+                ]);
+        } catch (ConnectionException $e) {
+            report($e);
+
+            return 'Sorry, ik kon je vraag even niet verwerken. Kun je hem opnieuw stellen?';
+        }
 
         if (! $response->successful()) {
             report(new RuntimeException('Anthropic API error: '.$response->body()));

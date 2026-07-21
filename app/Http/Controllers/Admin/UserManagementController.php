@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MinuteTransaction;
 use App\Models\User;
 use App\Models\UserMinuteBalance;
+use App\Services\LiveAvatarService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,12 +16,21 @@ use Inertia\Response;
 
 class UserManagementController extends Controller
 {
+    public function __construct(private LiveAvatarService $liveAvatar)
+    {
+    }
+
     /**
      * Overzicht: alle gebruikers met resterende minuten en laatste sessie.
      */
     public function index(Request $request): Response
     {
         $search = trim((string) $request->query('zoek', ''));
+
+        // Tegoed bij LiveAvatar: FULL kost 2 credits per minuut, LITE 1.
+        $creditsLeft = $this->liveAvatar->creditsLeft();
+        $creditsPerMinute = config('liveavatar.mode') === 'FULL' ? 2 : 1;
+        $outstandingSeconds = (int) UserMinuteBalance::sum('seconds_remaining');
 
         $users = User::query()
             ->leftJoin('user_minute_balances', 'users.id', '=', 'user_minute_balances.user_id')
@@ -32,7 +42,8 @@ class UserManagementController extends Controller
             ->when($search !== '', function ($query) use ($search) {
                 $query->where(function ($q) use ($search) {
                     $q->where('users.name', 'like', "%{$search}%")
-                        ->orWhere('users.email', 'like', "%{$search}%");
+                        ->orWhere('users.email', 'like', "%{$search}%")
+                        ->orWhere('users.organization', 'like', "%{$search}%");
                 });
             })
             ->orderBy('users.name')
@@ -40,6 +51,7 @@ class UserManagementController extends Controller
                 'users.id',
                 'users.name',
                 'users.email',
+                'users.organization',
                 'users.is_admin',
                 DB::raw('coalesce(user_minute_balances.seconds_remaining, 0) as seconds_remaining'),
                 'avatar_sessions.started_at as last_session_at',
@@ -50,6 +62,7 @@ class UserManagementController extends Controller
                 'id' => $u->id,
                 'name' => $u->name,
                 'email' => $u->email,
+                'organization' => $u->organization,
                 'is_admin' => (bool) $u->is_admin,
                 'minutes_remaining' => (int) floor($u->seconds_remaining / 60),
                 'last_session_at' => $u->last_session_at,
@@ -58,6 +71,14 @@ class UserManagementController extends Controller
         return Inertia::render('Admin/Users', [
             'users' => $users,
             'zoek' => $search,
+            'credits' => [
+                'credits_left' => $creditsLeft,
+                'mode' => config('liveavatar.mode'),
+                'minutes_available' => $creditsLeft !== null
+                    ? intdiv($creditsLeft, $creditsPerMinute)
+                    : null,
+                'minutes_outstanding' => intdiv($outstandingSeconds, 60),
+            ],
         ]);
     }
 
@@ -71,6 +92,7 @@ class UserManagementController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:users,email',
+            'organization' => 'nullable|string|max:255',
             'password' => ['required', Password::defaults()],
             'minutes' => 'required|integer|min:0|max:10000',
         ]);
@@ -79,6 +101,7 @@ class UserManagementController extends Controller
             $user = User::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
+                'organization' => $validated['organization'] ?? null,
                 'password' => $validated['password'],
             ]);
 
@@ -101,6 +124,58 @@ class UserManagementController extends Controller
         });
 
         return back()->with('success', 'Account aangemaakt.');
+    }
+
+    /**
+     * Gesprekgeschiedenis van één gebruiker: sessieoverzicht met per sessie
+     * de mogelijkheid het transcript live bij LiveAvatar op te vragen.
+     * Wij slaan zelf geen gespreksinhoud op (optie B / dataminimalisatie).
+     */
+    public function sessions(User $user): Response
+    {
+        $sessions = $user->avatarSessions()
+            ->orderByDesc('started_at')
+            ->paginate(10)
+            ->through(fn ($s) => [
+                'id' => $s->id,
+                'started_at' => $s->started_at,
+                'minutes_used' => (int) round($s->seconds_used / 60),
+                'status' => $s->status,
+                'disclaimer_accepted' => $s->disclaimer_accepted,
+                'has_transcript' => (bool) $s->liveavatar_session_id,
+            ]);
+
+        return Inertia::render('Admin/UserSessions', [
+            'account' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'organization' => $user->organization,
+            ],
+            'sessions' => $sessions,
+        ]);
+    }
+
+    /**
+     * Transcript van één sessie, live opgehaald bij LiveAvatar.
+     */
+    public function transcript(\App\Models\AvatarSession $session): \Illuminate\Http\JsonResponse
+    {
+        if (! $session->liveavatar_session_id) {
+            return response()->json([
+                'error' => 'Van deze sessie is geen transcript beschikbaar (gestart vóór deze functie bestond).',
+            ], 404);
+        }
+
+        $transcript = $this->liveAvatar->getTranscript($session->liveavatar_session_id);
+
+        if ($transcript === null) {
+            return response()->json([
+                'error' => 'Het transcript is niet (meer) beschikbaar bij LiveAvatar.',
+            ], 404);
+        }
+
+        return response()->json(['transcript' => $transcript]);
     }
 
     /**

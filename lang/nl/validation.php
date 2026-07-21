@@ -228,6 +228,7 @@ return [
         'name'                     => 'naam',
         'national_code'            => 'landcode',
         'number'                   => 'nummer',
+        'organization'             => 'organisatie',
         'password'                 => 'wachtwoord',
         'password_confirmation'    => 'wachtwoordbevestiging',
         'phone'                    => 'telefoonnummer',

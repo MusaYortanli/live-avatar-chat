@@ -13,7 +13,8 @@ export default function GuestLayout({ children }) {
                         </span>
                     </Link>
                     <p className="mt-2 text-sm text-gray-600">
-                        Oefen cultuursensitieve gesprekken, in je eigen tempo.
+                        Ontvang praktische ondersteuning bij complexe
+                        vraagstukken in de zorg.
                     </p>
                 </div>
 

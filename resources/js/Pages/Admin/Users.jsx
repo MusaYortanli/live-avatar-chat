@@ -6,7 +6,61 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, router, useForm } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 
-export default function Users({ users, zoek }) {
+function CreditCard({ label, value, detail, valueClassName = '' }) {
+    return (
+        <div className="rounded-[14px] border border-[#E2E8E6] bg-surface px-6 py-5">
+            <div className="text-sm font-medium text-gray-600">{label}</div>
+            <div
+                className={
+                    'mt-1.5 text-[26px] font-bold text-gray-900 ' +
+                    valueClassName
+                }
+            >
+                {value}
+            </div>
+            {detail && (
+                <div className="mt-0.5 text-[13px] text-gray-500">{detail}</div>
+            )}
+        </div>
+    );
+}
+
+function CreditOverview({ credits }) {
+    const available = credits.minutes_available;
+    const outstanding = credits.minutes_outstanding;
+    const distributable = available !== null ? available - outstanding : null;
+
+    return (
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <CreditCard
+                label="Beschikbaar tegoed"
+                value={available !== null ? `${available} min` : '—'}
+                detail={
+                    available !== null
+                        ? `${credits.credits_left} credits (${credits.mode}-modus)`
+                        : 'Tegoed kon niet worden opgehaald'
+                }
+            />
+            <CreditCard
+                label="Uitstaand bij gebruikers"
+                value={`${outstanding} min`}
+                detail="Totaal saldo van alle accounts"
+            />
+            <CreditCard
+                label="Nog vrij te verdelen"
+                value={distributable !== null ? `${distributable} min` : '—'}
+                detail="Tegoed min uitstaand saldo"
+                valueClassName={
+                    distributable !== null && distributable < 0
+                        ? '!text-red-600'
+                        : ''
+                }
+            />
+        </div>
+    );
+}
+
+export default function Users({ users, zoek, credits }) {
     const [showCreate, setShowCreate] = useState(false);
     const [search, setSearch] = useState(zoek ?? '');
     const firstRender = useRef(true);
@@ -55,6 +109,8 @@ export default function Users({ users, zoek }) {
                     </button>
                 </div>
 
+                <CreditOverview credits={credits} />
+
                 {showCreate && (
                     <CreateUserCard onCreated={() => setShowCreate(false)} />
                 )}
@@ -64,7 +120,7 @@ export default function Users({ users, zoek }) {
                         type="search"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Zoek op naam of e-mailadres…"
+                        placeholder="Zoek op naam, e-mailadres of organisatie…"
                         className="block w-full sm:max-w-sm"
                         aria-label="Zoek gebruikers"
                     />
@@ -77,6 +133,9 @@ export default function Users({ users, zoek }) {
                                 <th className="px-5 py-3 font-medium">Naam</th>
                                 <th className="px-5 py-3 font-medium">
                                     E-mailadres
+                                </th>
+                                <th className="px-5 py-3 font-medium">
+                                    Organisatie
                                 </th>
                                 <th className="px-5 py-3 font-medium">
                                     Laatste sessie
@@ -96,7 +155,7 @@ export default function Users({ users, zoek }) {
                             {users.data.length === 0 && (
                                 <tr>
                                     <td
-                                        colSpan={5}
+                                        colSpan={6}
                                         className="px-5 py-8 text-center text-gray-500"
                                     >
                                         Geen gebruikers gevonden
@@ -174,7 +233,13 @@ function UserRow({ user }) {
     return (
         <tr className="border-b border-[#EEF2F0] last:border-0">
             <td className="px-5 py-3.5 font-medium text-gray-900">
-                {user.name}
+                <Link
+                    href={route('admin.users.sessions', user.id)}
+                    className="hover:text-primary hover:underline"
+                    title={`Gesprekken van ${user.name} bekijken`}
+                >
+                    {user.name}
+                </Link>
                 {user.is_admin && (
                     <span className="ms-2 rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary">
                         admin
@@ -182,6 +247,9 @@ function UserRow({ user }) {
                 )}
             </td>
             <td className="px-5 py-3.5 text-gray-600">{user.email}</td>
+            <td className="px-5 py-3.5 text-gray-600">
+                {user.organization ?? '-'}
+            </td>
             <td className="px-5 py-3.5 text-gray-600">
                 {user.last_session_at
                     ? new Date(user.last_session_at).toLocaleDateString(
@@ -234,6 +302,7 @@ function CreateUserCard({ onCreated }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
+        organization: '',
         password: '',
         minutes: 30,
     });
@@ -288,6 +357,25 @@ function CreateUserCard({ onCreated }) {
                         required
                     />
                     <InputError message={errors.email} className="mt-2" />
+                </div>
+
+                <div>
+                    <InputLabel
+                        htmlFor="new-organization"
+                        value="Organisatie (optioneel)"
+                    />
+                    <TextInput
+                        id="new-organization"
+                        value={data.organization}
+                        className="mt-1 block w-full"
+                        onChange={(e) =>
+                            setData('organization', e.target.value)
+                        }
+                    />
+                    <InputError
+                        message={errors.organization}
+                        className="mt-2"
+                    />
                 </div>
 
                 <div>

@@ -54,7 +54,7 @@ export default function Dashboard({ stats }) {
                         }
                     />
                     <StatCard
-                        label="Minuten geoefend"
+                        label="Minuten gesproken"
                         value={stats.minutesPracticed}
                     />
                 </div>
@@ -62,11 +62,12 @@ export default function Dashboard({ stats }) {
                 <div className="mt-6 flex flex-col gap-5 rounded-[14px] border border-[#D8E6E2] bg-[#EEF5F3] px-7 py-6 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <h2 className="text-lg font-bold text-gray-900">
-                            Start een oefengesprek
+                            Start een gesprek
                         </h2>
                         <p className="mt-1 text-sm text-gray-600">
-                            Oefen een cultuursensitieve casus met de avatar en
-                            krijg communicatieadvies op maat.
+                            Stel je vraag of bespreek een situatie uit de
+                            praktijk. De avatar helpt je om perspectieven te
+                            verkennen en passende communicatiekeuzes te maken.
                         </p>
                     </div>
                     <Link

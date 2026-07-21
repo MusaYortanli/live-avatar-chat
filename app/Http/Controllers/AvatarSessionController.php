@@ -31,7 +31,7 @@ class AvatarSessionController extends Controller
      * POORTWACHTER: start een sessie.
      * Geen minuten = geen LiveAvatar-token = geen sessie.
      */
-    public function start(Request $request): JsonResponse
+    public function start(Request $request, LiveAvatarService $liveAvatar): JsonResponse
     {
         $request->validate([
             'disclaimer_accepted' => 'accepted',
@@ -39,16 +39,26 @@ class AvatarSessionController extends Controller
 
         $user = $request->user();
 
-        return DB::transaction(function () use ($user, $request) {
+        // Snelle voorcontrole zonder lock: bespaart een API-call bij leeg tegoed.
+        if (UserMinuteBalance::forUser($user->id)->seconds_remaining < 60) {
+            return $this->noMinutesResponse();
+        }
+
+        // Externe call BUITEN de transactie/lock: een token minten kost geen
+        // credits (LiveAvatar rekent pas af per minuut streaming), dus we
+        // houden de balance-rij niet gelockt tijdens de netwerklatentie.
+        $liveAvatarSession = $liveAvatar->createSessionToken();
+
+        return DB::transaction(function () use ($user, $request, $liveAvatarSession) {
             $balance = UserMinuteBalance::query()
                 ->where('user_id', $user->id)
                 ->lockForUpdate()
                 ->first() ?? UserMinuteBalance::forUser($user->id);
 
+            // Autoritatieve hercontrole binnen de lock (race tussen voorcontrole
+            // en nu, bijv. een parallelle sessie die tegoed verbruikte).
             if ($balance->seconds_remaining < 60) {
-                return response()->json([
-                    'error' => 'Je hebt geen minuten meer. Koop extra minuten om verder te gaan.',
-                ], 402);
+                return $this->noMinutesResponse();
             }
 
             // Eén actieve sessie per gebruiker
@@ -57,11 +67,10 @@ class AvatarSessionController extends Controller
                 'ended_at' => now(),
             ]);
 
-            $token = app(LiveAvatarService::class)->createSessionToken();
-
             $session = AvatarSession::create([
                 'user_id' => $user->id,
                 'mode' => config('liveavatar.mode'),
+                'liveavatar_session_id' => $liveAvatarSession['session_id'],
                 'status' => 'active',
                 'started_at' => now(),
                 'last_heartbeat_at' => now(),
@@ -70,10 +79,17 @@ class AvatarSessionController extends Controller
 
             return response()->json([
                 'session_id' => $session->id,
-                'session_token' => $token,
+                'session_token' => $liveAvatarSession['token'],
                 'seconds_remaining' => $balance->seconds_remaining,
             ]);
         });
+    }
+
+    private function noMinutesResponse(): JsonResponse
+    {
+        return response()->json([
+            'error' => 'Je hebt geen minuten meer. Koop extra minuten om verder te gaan.',
+        ], 402);
     }
 
     /**
@@ -141,7 +157,7 @@ class AvatarSessionController extends Controller
      * LITE mode: user-vraag → Claude (MDR-prompt) → tekst terug.
      * Frontend laat de avatar dit uitspreken via session.repeat(text).
      */
-    public function chat(Request $request, AvatarSession $session): JsonResponse
+    public function chat(Request $request, AvatarSession $session, AvatarConversationService $conversation): JsonResponse
     {
         abort_unless($session->user_id === $request->user()->id, 403);
         abort_unless($session->status === 'active', 409, 'Sessie is beëindigd.');
@@ -150,8 +166,7 @@ class AvatarSessionController extends Controller
             'message' => 'required|string|max:2000',
         ]);
 
-        $reply = app(AvatarConversationService::class)
-            ->reply($session, $validated['message']);
+        $reply = $conversation->reply($session, $validated['message']);
 
         return response()->json(['reply' => $reply]);
     }

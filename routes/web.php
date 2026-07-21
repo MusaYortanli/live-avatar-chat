@@ -23,6 +23,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/gebruikers', [UserManagementController::class, 'index'])->name('users.index');
     Route::post('/gebruikers', [UserManagementController::class, 'store'])->name('users.store');
     Route::post('/gebruikers/{user}/minuten', [UserManagementController::class, 'addMinutes'])->name('users.minutes');
+    Route::get('/gebruikers/{user}/gesprekken', [UserManagementController::class, 'sessions'])->name('users.sessions');
+    Route::get('/sessies/{session}/transcript', [UserManagementController::class, 'transcript'])->name('sessions.transcript');
 });
 
 require __DIR__.'/auth.php';

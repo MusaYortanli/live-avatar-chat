@@ -290,14 +290,14 @@ export default function Session({ minutesRemaining, mode }) {
 
     return (
         <AuthenticatedLayout>
-            <Head title="Oefengesprek" />
+            <Head title="Gesprek" />
 
             <div className="px-4 py-6 sm:px-8">
                 <div className="mx-auto max-w-6xl overflow-hidden rounded-[14px] border border-[#E2E8E6] bg-surface shadow-md">
                     {/* Sessie-topbar */}
                     <div className="flex flex-wrap items-center gap-3 border-b border-[#E2E8E6] px-5 py-3.5">
                         <h1 className="text-[17px] font-bold text-gray-900">
-                            Oefengesprek
+                            Gesprek
                         </h1>
 
                         <StatusBadge status={status} />
@@ -481,16 +481,20 @@ function DisclaimerCard({ onStart }) {
             </div>
 
             <p className="mt-4 text-sm leading-[1.55] text-gray-700">
-                ObizCare helpt je oefenen met <strong>communicatie</strong> in
-                cultuursensitieve situaties. De avatar geeft{' '}
+                ObizCare ondersteunt je bij <strong>communicatie</strong> in
+                cultuursensitieve situaties. De avatar helpt je door vragen te
+                stellen, perspectieven te verkennen en praktische
+                communicatieadviezen te bieden. De avatar geeft{' '}
                 <strong>géén medisch advies</strong>, geen diagnoses en geen
                 behandelinformatie. Twijfel je over medische zaken? Overleg dan
                 altijd met een collega of behandelaar.
             </p>
 
             <p className="mt-4 rounded-sm bg-gray-100 p-3 text-[13px] leading-snug text-gray-600">
-                Het gesprek is een oefening. Er worden geen echte
-                patiëntgegevens gebruikt of opgeslagen.
+                <strong>Voer geen herleidbare patiëntgegevens in</strong>{' '}
+                (zoals namen of geboortedata). Gesprekken kunnen door OBIZ
+                Care worden teruggelezen, uitsluitend voor kwaliteitsverbetering
+                van de avatar.
             </p>
 
             <button
